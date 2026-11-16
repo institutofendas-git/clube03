@@ -30,8 +30,8 @@
 @font-face{font-family:"Instrument Serif";font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin-400-normal.woff2) format("woff2")}
 :root{--verde:#033D2F;--verde2:#0B4A3A;--grama:#ACC246;--creme:#FDEEDD;--papel:#F7EFE2;--vermelho:#BA2B2B;--azul:#708CB5;--tinta:#14241E;--ease:cubic-bezier(.2,.7,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0;min-width:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:"Alegreya Sans",system-ui,sans-serif;background:var(--papel);color:var(--tinta);font-size:17px;line-height:1.6;overflow-x:clip}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top));background:var(--papel)}
+body{padding-top:calc(70px + env(safe-area-inset-top));font-family:"Alegreya Sans",system-ui,sans-serif;background:var(--papel);color:var(--tinta);font-size:17px;line-height:1.6;overflow-x:clip}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.07;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 img{display:block;max-width:100%;height:auto}
@@ -52,7 +52,7 @@ h2 i{font-style:italic}
 .rv.in{opacity:1;transform:none}.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
 /* topo */
-.topo{position:relative;height:min(92svh,860px);min-height:520px;overflow:hidden;background:var(--verde)}
+.topo{position:relative;height:min(calc(100svh - 70px - env(safe-area-inset-top)),860px);min-height:520px;overflow:hidden;background:var(--verde)}
 .topo .img{position:absolute;inset:-6% 0 0;background:center 72%/cover no-repeat;will-change:transform;transition:opacity .6s}
 .topo{background:var(--verde)}
 .topo .img.pintura{background-image:url(img/pomar.jpg);background-position:50% 45%;opacity:.8}
@@ -63,7 +63,7 @@ h2 i{font-style:italic}
 .topo .rola{position:absolute;z-index:2;left:50%;bottom:26px;transform:translateX(-50%);color:var(--creme);font-size:.9rem;opacity:.85;text-decoration:none}
 
 /* navegação */
-.nav{position:sticky;top:0;z-index:40;background:var(--papel);padding-top:env(safe-area-inset-top);border-bottom:1px solid rgba(3,61,47,.12)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;background:var(--papel);padding-top:env(safe-area-inset-top);border-bottom:1px solid rgba(3,61,47,.12)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:70px}
 .nav .marca{display:block;flex:none}.nav .marca img{height:42px;width:auto;max-width:none}
 .nav ul{list-style:none;display:flex;gap:26px;font-size:.95rem}
@@ -287,7 +287,6 @@ footer a{color:var(--creme)}
   <p class="l rv">Uma <i>aula</i> ao vivo por mês</p>
   <p class="l rv d1">Uma <i>leitura</i> para ler junto</p>
   <p class="l rv d2">Todo o <i>acervo</i> gravado</p>
-  <p class="l rv d3">Um <i>grupo</i> para exercitar a curiosidade</p>
   <p class="rodape rv">tudo numa assinatura</p>
 </section>
 
