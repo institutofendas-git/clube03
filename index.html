@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clube 03 · Um clube de estudos sobre amor, vida e relações</title>
+<meta name="description" content="Clube de estudos conduzido por Francisco Ilo, psicólogo. Uma aula ao vivo por mês, uma leitura para estudar junto, o acervo de aulas gravadas e uma comunidade para continuar a conversa.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#033D2F">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Clube 03">
+<meta property="og:title" content="Clube 03">
+<meta property="og:description" content="Um clube de estudos sobre amor, vida e as relações que a gente constrói.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/alegreya-sans-latin-400-normal.woff2" crossorigin>
+<style>
+  @font-face{font-family:"Alegreya Sans";font-weight:400;font-display:swap;src:url(fonts/alegreya-sans-latin-400-normal.woff2) format("woff2")}
+  @font-face{font-family:"Alegreya Sans";font-weight:700;font-display:swap;src:url(fonts/alegreya-sans-latin-700-normal.woff2) format("woff2")}
+  @font-face{font-family:"Alegreya Sans";font-weight:800;font-display:swap;src:url(fonts/alegreya-sans-latin-800-normal.woff2) format("woff2")}
+  @font-face{font-family:"Birthstone";font-weight:400;font-display:swap;src:url(fonts/birthstone-latin-400-normal.woff2) format("woff2")}
+  @font-face{font-family:"Instrument Serif";font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin-400-normal.woff2) format("woff2")}
+  :root{--verde:#033D2F;--grama:#ACC246;--creme:#FDEEDD;--vermelho:#BA2B2B;--azul:#708CB5;--papel:#FBF6EE;--tinta:#14241E}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{font-family:"Alegreya Sans",system-ui,sans-serif;background:var(--papel);color:var(--tinta);line-height:1.55;font-size:1.08rem}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--grama);outline-offset:3px;border-radius:6px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
+  .serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+  .script{font-family:"Birthstone",cursive;font-weight:400}
+  h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:2.3rem;line-height:1.05;color:var(--verde);margin-bottom:18px}
+  h2 em{font-style:italic;color:var(--grama)}
+  section{padding:64px 0}
+  p+p{margin-top:14px}
+  .btn{display:inline-block;padding:13px 26px;border-radius:999px;background:var(--creme);color:var(--verde);
+       font-weight:800;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:transform .2s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.escuro{background:var(--verde);color:var(--creme)}
+
+  /* Abertura */
+  .hero{background:var(--verde);color:var(--creme);text-align:center;padding:56px 24px 72px}
+  .hero .brasao{width:150px;margin:0 auto 26px}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:4rem;line-height:.95}
+  .hero .tag{margin:16px auto 30px;max-width:30ch;font-size:1.25rem;line-height:1.4}
+  .hero .tag em{font-style:italic;color:var(--grama)}
+
+  /* Este mês */
+  .mes{background:var(--creme);padding:40px 0}
+  .mes .rotulo{font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--vermelho)}
+  .mes h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.9rem;line-height:1.1;color:var(--verde);margin:6px 0 8px}
+
+  /* Por que 03 */
+  .tres{background:var(--tinta);color:var(--creme)}
+  .tres h2{color:var(--creme)}
+  .tres .grande{font-family:"Birthstone",cursive;font-size:3.2rem;line-height:.9;color:var(--creme);margin-bottom:8px}
+
+  /* Acervo */
+  .acervo{padding-bottom:40px}
+  .estante{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 24px 26px;
+           max-width:1080px;margin:0 auto;-webkit-overflow-scrolling:touch}
+  .capa{flex:0 0 200px;aspect-ratio:2/3;scroll-snap-align:start;border-radius:6px 14px 14px 6px;padding:22px 18px;
+        display:flex;flex-direction:column;justify-content:space-between;color:var(--creme);position:relative;
+        box-shadow:inset 6px 0 0 rgba(0,0,0,.18),0 16px 26px -16px rgba(3,30,22,.6)}
+  .capa .n{font-weight:800;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+  .capa .t{font-family:"Instrument Serif",Georgia,serif;font-size:1.7rem;line-height:1.05}
+  .capa .l{font-size:.9rem;opacity:.9}
+  .capa img{width:42px;opacity:.9}
+  .capa.c1{background:var(--verde)} .capa.c2{background:var(--vermelho)} .capa.c3{background:var(--azul)}
+  .capa.vazia{background:transparent;color:var(--verde);border:1.5px dashed rgba(3,61,47,.35);box-shadow:none}
+  .dica{text-align:center;font-size:.9rem;color:#5b6b64}
+
+  /* Como funciona */
+  .lista{list-style:none;display:grid;gap:14px;margin-top:6px}
+  .lista li{padding:16px 18px;border-radius:14px;background:#fff;border:1px solid rgba(3,61,47,.12)}
+  .lista b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.4rem;color:var(--verde)}
+
+  /* Assinatura */
+  .assine{background:var(--verde);color:var(--creme);text-align:center}
+  .assine h2{color:var(--creme)}
+  .preco{font-family:"Instrument Serif",Georgia,serif;font-size:4rem;line-height:1;margin:6px 0 4px}
+  .preco small{font-family:"Alegreya Sans",sans-serif;font-size:1.1rem}
+  .assine .obs{opacity:.85;margin-bottom:26px}
+
+  /* Perguntas */
+  details{border-bottom:1px solid rgba(3,61,47,.18);padding:16px 0}
+  summary{cursor:pointer;font-family:"Instrument Serif",Georgia,serif;font-size:1.35rem;color:var(--verde);list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";float:right;color:var(--vermelho)}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:10px}
+
+  /* Quem conduz */
+  .quem{background:var(--creme)}
+
+  footer{background:var(--verde);color:var(--creme);text-align:center;padding:44px 24px;font-size:.95rem}
+  footer img{width:70px;margin:0 auto 14px}
+  footer a{color:var(--creme)}
+
+  @media (min-width:860px){
+    .hero h1{font-size:5.2rem}
+    h2{font-size:2.8rem}
+    .capa{flex-basis:220px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="brasao" src="img/brasao-creme.webp" alt="Brasão do Clube 03" width="462" height="500">
+  <h1>Clube 03</h1>
+  <p class="tag">Um clube de estudos sobre amor, vida e as relações que a gente <em>constrói</em>.</p>
+  <!-- TROCAR: link de assinatura da Hotmart -->
+  <a class="btn" href="#assine">Quero entrar</a>
+</header>
+
+<!-- BLOCO DO MÊS: trocar tema, leitura, data e horário a cada aula -->
+<section class="mes" aria-label="Este mês">
+  <div class="wrap">
+    <span class="rotulo">Este mês</span>
+    <h3>A primeira aula ao vivo acontece em 26 de janeiro de 2027.</h3>
+    <p>Tema e leitura em breve.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>O que é</h2>
+    <p>Todo mês eu escolho algo que estou estudando — uma questão da clínica, uma pergunta da vida, um livro que não me larga — e transformo numa aula.</p>
+    <p>A aula vem com uma leitura: um conto, uma crônica, um capítulo. Eu conto o que aprendi, a literatura atravessa a conversa, e o estudo continua com quem estudou junto.</p>
+  </div>
+</section>
+
+<section class="tres">
+  <div class="wrap">
+    <p class="grande">por que 03</p>
+    <p>Toda relação tem três histórias: a de cada pessoa e a que se constrói entre elas.</p>
+    <p>E todo mundo precisa de um terceiro lugar, além da casa e do trabalho, para pensar a vida com calma. O clube quer ser esse lugar.</p>
+  </div>
+</section>
+
+<section class="acervo">
+  <div class="wrap"><h2>O acervo</h2>
+    <p>Cada aula vira uma capa. Quem assina tem acesso a todas, desde o primeiro dia.</p></div>
+  <!-- ACERVO: uma .capa por aula gravada (classe c1, c2 ou c3 para a cor) -->
+  <div class="estante" tabindex="0" aria-label="Capas das aulas">
+    <div class="capa c1"><span class="n">Aula 01</span><span class="t">Em breve</span><img src="img/brasao-creme.webp" alt=""></div>
+    <div class="capa c2"><span class="n">Aula 02</span><span class="t">Em breve</span><img src="img/brasao-creme.webp" alt=""></div>
+    <div class="capa c3"><span class="n">Aula 03</span><span class="t">Em breve</span><img src="img/brasao-creme.webp" alt=""></div>
+    <div class="capa vazia"><span class="n">Próxima</span><span class="t">Ao vivo, uma por mês</span><span class="l">e a estante vai crescendo</span></div>
+  </div>
+  <p class="dica">arraste para o lado</p>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Para quem</h2>
+    <p>Para psicólogas e psicólogos que gostam de estudar sem fórmula pronta e querem levar para o consultório mais do que técnica.</p>
+    <p>E para qualquer pessoa curiosa sobre o amor e a vida, mesmo sem ser da área.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Como funciona</h2>
+    <ul class="lista">
+      <li><b>Uma aula ao vivo por mês</b>De 1h30, às terças.</li>
+      <li><b>A leitura do mês</b>Para estudar antes ou depois da aula.</li>
+      <li><b>O acervo</b>Todas as aulas gravadas, para assistir quando quiser.</li>
+      <li><b>A comunidade</b>O grupo no WhatsApp e os comentários em cada aula, para continuar a conversa.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="assine" id="assine">
+  <div class="wrap">
+    <h2>Entre para o clube</h2>
+    <p class="preco">R$49<small>/mês</small></p>
+    <p class="obs">Todas as aulas, a leitura do mês e a comunidade, enquanto você assinar. Cancele quando quiser.</p>
+    <!-- TROCAR: link de assinatura da Hotmart -->
+    <a class="btn" href="#">Quero assinar</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Perguntas</h2>
+    <details><summary>Não sou psicóloga. É pra mim?</summary>
+      <p>Sim. De vez em quando entram termos clínicos e técnicos, mas é uma conversa que interessa a todo mundo.</p></details>
+    <details><summary>Não tenho tempo para mais uma coisa.</summary>
+      <p>Então não coloque mais uma coisa na sua vida. Se quiser, arrume tempo: tire outra coisa daí. Eu vou estar lá.</p></details>
+    <details><summary>E se eu assinar e não assistir, como os cursos que comprei?</summary>
+      <p>A ideia é ser mais do que um curso: um lugar para exercitar, pensar a vida e as nossas relações. Eu acharia triste você assinar e não assistir. E, se você não vai assistir, tem todo o motivo para não assinar.</p></details>
+    <details><summary>Perdi a aula ao vivo. E agora?</summary>
+      <p>A gravação entra no acervo, e você assiste quando puder.</p></details>
+    <details><summary>Tem certificado?</summary>
+      <p>Sim, a pedido, por um formulário.</p></details>
+    <details><summary>Como cancelo?</summary>
+      <p>Pela própria Hotmart, quando quiser. O acesso vale enquanto a assinatura estiver ativa.</p></details>
+  </div>
+</section>
+
+<section class="quem">
+  <div class="wrap">
+    <h2>Quem conduz</h2>
+    <p>Francisco Ilo, psicólogo (CRP 11/17085), especialista em Terapia de Aceitação e Compromisso, com formação em Psicoterapia Analítica Funcional e em Terapia Comportamental Integrativa de Casais. Atende pessoas e relacionamentos e dá aulas em formações de psicoterapia.</p>
+    <p><a href="https://franciscoilo.com/">franciscoilo.com</a> · <a href="https://www.instagram.com/fco.ilo/">@fco.ilo</a></p>
+  </div>
+</section>
+
+<footer>
+  <img src="img/brasao-creme.webp" alt="" width="462" height="500">
+  <p>Clube 03 · Francisco Ilo Lima Filho · CRP 11/17085</p>
+</footer>
+
+</body>
+</html>
