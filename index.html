@@ -57,6 +57,8 @@ h2 em{font-style:italic;color:var(--vermelho)}
 .bar{position:fixed;inset:0 0 auto;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;
      color:var(--creme);transition:background .35s,padding .35s,box-shadow .35s}
 .bar.cheia{background:rgba(3,61,47,.94);backdrop-filter:blur(8px);padding:10px 22px;box-shadow:0 10px 30px -18px rgba(0,0,0,.6)}
+.marca img{height:48px;width:auto}
+footer .marca img{height:150px}
 .marca{font-family:"Instrument Serif",Georgia,serif;font-size:1.6rem;text-decoration:none;letter-spacing:.01em}
 .marca i{font-style:italic;color:var(--grama)}
 .bar .btn{padding:9px 18px;font-size:.72rem}
@@ -260,8 +262,7 @@ footer a{color:var(--creme)}
 <body id="topo">
 
 <header class="bar" id="bar">
-  <!-- TROCAR: quando chegar o arquivo da logo do Clube 03, substituir este texto pela imagem -->
-  <a class="marca" href="#topo">Clube <i>03</i></a>
+  <a class="marca" href="#topo"><img src="img/clube03-horiz-bege.svg" alt="Clube 03" width="120" height="52"></a>
   <a class="btn" href="#" data-checkout>Assinar</a>
 </header>
 
@@ -475,7 +476,7 @@ footer a{color:var(--creme)}
 </main>
 
 <footer>
-  <a class="marca" href="#topo">Clube <i>03</i></a>
+  <a class="marca" href="#topo"><img src="img/clube03-vert-bege.svg" alt="Clube 03" width="110" height="153" style="margin:0 auto 14px"></a>
   <p>Francisco Ilo Lima Filho · CRP 11/17085</p>
 </footer>
 
