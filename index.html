@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Clube 03</title>
 <meta name="description" content="Clube 03: uma comunidade para olhar com mais clareza para as relações que fazem a sua vida. Uma aula ao vivo por mês, uma leitura, o acervo gravado e a conversa no grupo. Com Francisco Ilo, psicólogo.">
 <meta name="robots" content="noindex">
@@ -55,7 +55,7 @@ h2 i{font-style:italic}
 .topo{position:relative;height:min(92svh,860px);min-height:520px;overflow:hidden;background:var(--verde)}
 .topo .img{position:absolute;inset:-6% 0 0;background:center 72%/cover no-repeat;will-change:transform;transition:opacity .6s}
 .topo{background:var(--verde)}
-.topo .img.pintura{background-image:url(img/pomar.jpg);background-position:50% 45%;opacity:.95}
+.topo .img.pintura{background-image:url(img/pomar.jpg);background-position:50% 45%;opacity:.8}
 .topo .logo{position:absolute;z-index:2;left:50%;top:50%;width:clamp(160px,17vw,240px);transform:translate(-50%,-50%)}
 .topo .rola{color:#fff!important;opacity:.95!important;font-weight:700}
 @media(max-width:700px){.topo .img.pintura{background-position:42% 50%}.topo .logo{width:160px}}
@@ -63,7 +63,7 @@ h2 i{font-style:italic}
 .topo .rola{position:absolute;z-index:2;left:50%;bottom:26px;transform:translateX(-50%);color:var(--creme);font-size:.9rem;opacity:.85;text-decoration:none}
 
 /* navegação */
-.nav{position:sticky;top:0;z-index:40;background:rgba(247,239,226,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(3,61,47,.12)}
+.nav{position:sticky;top:0;z-index:40;background:var(--papel);padding-top:env(safe-area-inset-top);border-bottom:1px solid rgba(3,61,47,.12)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:70px}
 .nav .marca{display:block;flex:none}.nav .marca img{height:42px;width:auto;max-width:none}
 .nav ul{list-style:none;display:flex;gap:26px;font-size:.95rem}
@@ -247,18 +247,11 @@ h2 i{font-style:italic}
 .fecho p{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.04;max-width:14ch;margin:0 auto 30px;text-wrap:balance}
 .fecho p i{font-style:italic}
 
-footer{background:var(--verde);color:var(--creme);text-align:center;padding:50px 24px 120px;font-size:.95rem}
+footer{background:var(--verde);color:var(--creme);text-align:center;padding:50px 24px calc(60px + env(safe-area-inset-bottom));font-size:.95rem}
 footer img{width:110px;margin:0 auto 18px}
 footer a{color:var(--creme)}
 
-.fixa{position:fixed;right:16px;bottom:16px;z-index:50;display:flex;align-items:center;gap:16px;background:var(--tinta);color:var(--creme);border-radius:999px;padding:6px 6px 6px 22px;
-  box-shadow:0 18px 30px -12px rgba(0,0,0,.5);transform:translateY(160%);transition:transform .5s var(--ease)}
-.fixa.ver{transform:none}
-.fixa b{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.5rem;white-space:nowrap}
-.fixa b small{font-family:"Alegreya Sans",sans-serif;font-size:.85rem;opacity:.8}
-.fixa .btn{min-height:40px;background:var(--creme);color:var(--verde)}
-.fixa .btn .ar{background:var(--verde);color:var(--creme)}
-@media(max-width:600px){.fixa{left:12px;right:12px;justify-content:space-between}}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.rv,.tag{opacity:1}.rv{transform:none}}
 </style>
 </head>
@@ -294,7 +287,7 @@ footer a{color:var(--creme)}
   <p class="l rv">Uma <i>aula</i> ao vivo por mês</p>
   <p class="l rv d1">Uma <i>leitura</i> para ler junto</p>
   <p class="l rv d2">Todo o <i>acervo</i> gravado</p>
-  <p class="l rv d3">A <i>conversa</i> que continua</p>
+  <p class="l rv d3">Um <i>grupo</i> para exercitar a curiosidade</p>
   <p class="rodape rv">tudo numa assinatura</p>
 </section>
 
@@ -368,7 +361,7 @@ footer a{color:var(--creme)}
 
 <section class="acervo" id="acervo">
   <div class="wrap topo-a">
-    <div><h2 class="rv">O <i>acervo</i></h2><p class="rv d1" style="margin-top:12px;max-width:44ch">Cada aula vira um livro na estante. Quem assina lê todos, desde o primeiro dia.</p></div>
+    <div><h2 class="rv">O <i>acervo</i></h2><p class="rv d1" style="margin-top:12px;max-width:44ch">Cada aula fica gravada para você assistir quando quiser. Quem assina tem acesso a todas, desde o primeiro dia.</p></div>
     <div class="setas rv d2"><button class="seta" id="esq" aria-label="Voltar na estante"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button class="seta" id="dir" aria-label="Avançar na estante"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
   </div>
   <!-- ACERVO: um .livro por aula -->
@@ -435,7 +428,7 @@ footer a{color:var(--creme)}
   <p>Francisco Ilo Lima Filho · CRP 11/17085 · <a href="https://www.instagram.com/fco.ilo/">@fco.ilo</a></p>
 </footer>
 
-<div class="fixa" id="fixa" aria-hidden="true"><b>R$49<small>/mês</small></b><a class="btn" href="#socio" data-checkout tabindex="-1">Assinar <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+
 
 <script>
 {
@@ -475,13 +468,11 @@ footer a{color:var(--creme)}
   const col = $('#colagem');
   const fios = ['#fio', '#fioM'].map(id => { const el = $(id); let L = 0; try { L = el.getTotalLength(); el.style.strokeDasharray = L; el.style.strokeDashoffset = still ? 0 : L; } catch (e) {} return { el, L }; });
 
-  const topoImgs = $$('.topo .img'), fixa = $('#fixa'), topo = $('#topo'), socio = $('#socio'), fechoImg = $('#fechoImg');
+  const topoImgs = $$('.topo .img'), topo = $('#topo'), fechoImg = $('#fechoImg');
   const onScroll = () => {
     const y = scrollY, vh = innerHeight;
     if (!still && y < topo.offsetHeight) topoImgs.forEach(i => i.style.transform = `translateY(${y * .3}px)`);
     if (!still) { const r = col.getBoundingClientRect(); const p = Math.min(1, Math.max(0, (vh - r.top) / (r.height + vh * .5))); fios.forEach(f => { if (f.L) f.el.style.strokeDashoffset = f.L * (1 - p); }); }
-    const s = socio.getBoundingClientRect();
-    fixa.classList.toggle('ver', y > topo.offsetHeight + 300 && !(s.top < vh && s.bottom > 0));
     if (!still) { const f = fechoImg.parentElement.getBoundingClientRect(); if (f.top < vh && f.bottom > 0) fechoImg.style.transform = `translateY(${(f.top - vh / 2) * -.12}px)`; }
   };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
