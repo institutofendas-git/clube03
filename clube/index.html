@@ -55,11 +55,12 @@ h2 i{font-style:italic}
 .topo{position:relative;height:min(calc(100svh - 70px - env(safe-area-inset-top)),860px);min-height:520px;overflow:hidden;background:var(--verde)}
 .topo .img{position:absolute;inset:0;background:center 72%/cover no-repeat;will-change:transform;transition:opacity .6s}
 .topo{background:var(--verde)}
-.topo .img.pintura{background-image:url(../img/pomar.jpg);background-position:50% 45%;opacity:.8}
+.topo .img.pintura{background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAQABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDTup7W0wJpFBPaiC6tJlDJKv515zLd3U75kdnPqTUiySJHy5H41i7oSij0NtStEkMLSoH+tFebCC4nbzA5Oe5NFF49wsf/2Q==);background-position:50% 45%;opacity:.8}
+.topo .img .fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
 .topo .logo{position:absolute;z-index:2;left:50%;top:50%;width:clamp(160px,17vw,240px);transform:translate(-50%,-50%)}
 .topo .rola{color:#fff!important;opacity:.95!important;font-weight:700}
 @media(hover:hover) and (pointer:fine){.topo .img{inset:-6% 0 0}}
-@media(max-width:700px){.topo .img.pintura{background-position:42% 50%}.topo .logo{width:160px}}
+@media(max-width:700px){.topo .img.pintura{background-position:42% 50%}.topo .img .fundo{object-position:42% 50%}.topo .logo{width:160px}}
 .topo .logo img{width:100%}
 .topo .rola{position:absolute;z-index:2;left:50%;bottom:26px;transform:translateX(-50%);color:var(--creme);font-size:.9rem;opacity:.85;text-decoration:none}
 
@@ -250,7 +251,7 @@ h2 i{font-style:italic}
 
 /* fecho */
 .fecho{position:relative;min-height:80svh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;background:var(--verde)}
-.fecho .img{position:absolute;inset:-8% 0;background:url(../img/foto-mar.jpg) center/cover;will-change:transform}
+.fecho .img{position:absolute;inset:-8% 0;background:url(../img/w/foto-mar.webp) center/cover;will-change:transform}
 .fecho::after{content:"";position:absolute;inset:0;background:rgba(3,40,32,.42)}
 .fecho .in{position:relative;z-index:2;padding:0 24px}
 .fecho p{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.04;max-width:14ch;margin:0 auto 30px;text-wrap:balance}
@@ -262,6 +263,8 @@ footer a{color:var(--creme)}
 
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.rv,.tag{opacity:1}.rv{transform:none}}
+img.f{opacity:0;transition:opacity 1.1s ease}img.f.ok{opacity:1}
+@media(prefers-reduced-motion:reduce){img.f{opacity:1;transition:none}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Clube 03 · a assinatura", "url": "https://clube03.com.br/clube/", "inLanguage": "pt-BR", "description": "Clube 03: uma comunidade para olhar com mais clareza para as relações que fazem a sua vida. Encontros ao vivo toda semana, um curso de cada vez, o acervo gravado e a conversa no grupo. Com Francisco Ilo, psicólogo."}</script>
 </head>
@@ -269,7 +272,7 @@ footer a{color:var(--creme)}
 
 
 <header class="topo" id="topo">
-  <div class="img pintura" role="img" aria-label="Pomar em flor, de Charles-François Daubigny, 1873"></div>
+  <div class="img pintura" role="img" aria-label="Pomar em flor, de Charles-François Daubigny, 1873"><img class="fundo f" src="../img/w/pomar-1400.webp" srcset="../img/w/pomar-800.webp 800w, ../img/w/pomar-1400.webp 1400w, ../img/w/pomar-2000.webp 2000w" sizes="100vw" alt="" fetchpriority="high" decoding="async"></div>
   <h1 class="logo"><img src="../img/clube03-vert-branco.svg" alt="Clube 03" width="938" height="1307"></h1>
   <a class="rola" href="#clube">role para baixo ↓</a>
 </header>
@@ -309,9 +312,9 @@ footer a{color:var(--creme)}
     </div>
     <div class="colagem" id="colagem">
       <svg class="fio" id="fioSvg" aria-hidden="true"><path id="fio" fill="none" stroke="#BA2B2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <figure class="ft f1"><img src="../img/foto-gaivotas.jpg" alt="Gaivotas voando num céu claro" loading="lazy"></figure>
-      <figure class="ft f2"><img src="../img/foto-livro.jpg" alt="Livro aberto na janela de um trem em movimento" loading="lazy"></figure>
-      <figure class="ft f3"><img src="../img/foto-mar.jpg" alt="O mar visto da linha d'água" loading="lazy"></figure>
+      <figure class="ft f1"><img decoding="async" class="f" src="../img/w/foto-gaivotas.webp" alt="Gaivotas voando num céu claro" loading="lazy"></figure>
+      <figure class="ft f2"><img decoding="async" class="f" src="../img/w/foto-livro.webp" alt="Livro aberto na janela de um trem em movimento" loading="lazy"></figure>
+      <figure class="ft f3"><img decoding="async" class="f" src="../img/w/foto-mar.webp" alt="O mar visto da linha d'água" loading="lazy"></figure>
       <div class="tags-m">
         <span class="tag t1">amor</span><span class="tag t2">trabalho</span><span class="tag t3">dinheiro</span>
         <span class="tag t4">amizade</span><span class="tag t5">se sentir perdido</span><span class="tag t6">a gente mesmo</span>
@@ -341,12 +344,12 @@ footer a{color:var(--creme)}
   <div class="wrap">
     <div class="topo-m"><h2 class="rv">Como funciona <i>o clube</i></h2><p class="rv d1">Um curso de cada vez, com encontros toda semana. A leitura atravessa a conversa do começo ao fim.</p></div>
     <div class="linhas" id="linhas">
-      <figure class="flut" id="flut" aria-hidden="true"><img id="flutImg" src="../img/foto-livro.jpg" alt=""></figure>
-      <button class="linha on" data-img="../img/foto-livro.jpg"><span class="n">1</span><span class="t">A leitura chega</span><span class="mais" aria-hidden="true"></span><span class="d">Antes de cada encontro, você recebe um material para ler: um conto, uma crônica, um capítulo.</span></button>
-      <button class="linha" data-img="../img/foto-gaivotas.jpg"><span class="n">2</span><span class="t">O encontro</span><span class="mais" aria-hidden="true"></span><span class="d">Toda semana, numa terça ou num sábado de manhã, ao vivo, por duas horas, com um intervalo de dez minutos. A gente discute esse material juntos. Se precisar mudar o dia, você fica sabendo antes.</span></button>
-      <button class="linha" data-img="../img/foto-mar.jpg"><span class="n">3</span><span class="t">A gravação fica</span><span class="mais" aria-hidden="true"></span><span class="d">Se não deu para estar ao vivo, ou se quiser rever, a gravação fica no acervo.</span></button>
-      <button class="linha" data-img="../img/ilo.jpg"><span class="n">4</span><span class="t">A conversa continua</span><span class="mais" aria-hidden="true"></span><span class="d">Nos comentários de cada encontro, a discussão segue por outros temas que atravessam e conversam com esse.</span></button>
-      <button class="linha" data-img="../img/pomar.jpg"><span class="n">5</span><span class="t">Um curso dá lugar a outro</span><span class="mais" aria-hidden="true"></span><span class="d">Os encontros formam um curso, com um tema do começo ao fim. Quando ele termina, vem o próximo, e o anterior vai para a estante.</span></button>
+      <figure class="flut" id="flut" aria-hidden="true"><img decoding="async" class="f" id="flutImg" src="../img/w/foto-livro.webp" alt=""></figure>
+      <button class="linha on" data-img="../img/w/foto-livro.webp"><span class="n">1</span><span class="t">A leitura chega</span><span class="mais" aria-hidden="true"></span><span class="d">Antes de cada encontro, você recebe um material para ler: um conto, uma crônica, um capítulo.</span></button>
+      <button class="linha" data-img="../img/w/foto-gaivotas.webp"><span class="n">2</span><span class="t">O encontro</span><span class="mais" aria-hidden="true"></span><span class="d">Toda semana, numa terça ou num sábado de manhã, ao vivo, por duas horas, com um intervalo de dez minutos. A gente discute esse material juntos. Se precisar mudar o dia, você fica sabendo antes.</span></button>
+      <button class="linha" data-img="../img/w/foto-mar.webp"><span class="n">3</span><span class="t">A gravação fica</span><span class="mais" aria-hidden="true"></span><span class="d">Se não deu para estar ao vivo, ou se quiser rever, a gravação fica no acervo.</span></button>
+      <button class="linha" data-img="../img/w/ilo.webp"><span class="n">4</span><span class="t">A conversa continua</span><span class="mais" aria-hidden="true"></span><span class="d">Nos comentários de cada encontro, a discussão segue por outros temas que atravessam e conversam com esse.</span></button>
+      <button class="linha" data-img="../img/w/pomar-1400.webp"><span class="n">5</span><span class="t">Um curso dá lugar a outro</span><span class="mais" aria-hidden="true"></span><span class="d">Os encontros formam um curso, com um tema do começo ao fim. Quando ele termina, vem o próximo, e o anterior vai para a estante.</span></button>
     </div>
   </div>
 </section>
@@ -356,7 +359,7 @@ footer a{color:var(--creme)}
   <div class="wrap g">
     <h2 class="rv">Agora <i>no clube</i></h2>
     <div class="ev rv d1">
-      <figure class="cap foto"><img src="../img/teseu.jpg" alt="Teseu no labirinto, com o fio na mão, e o Minotauro espiando atrás do muro (Burne-Jones, 1861)" loading="lazy"></figure>
+      <figure class="cap foto"><img decoding="async" class="f" src="../img/teseu.jpg" alt="Teseu no labirinto, com o fio na mão, e o Minotauro espiando atrás do muro (Burne-Jones, 1861)" loading="lazy"></figure>
       <div><p class="dia">Conflitos constantes e regulação emocional</p><p>Cinco encontros ao vivo para aprender habilidades de regulação emocional e lidar de outro jeito com os conflitos que se repetem. Datas em breve.</p></div>
     </div>
   </div>
@@ -369,11 +372,11 @@ footer a{color:var(--creme)}
   </div>
   <!-- ACERVO: um .livro por curso -->
   <div class="estante" id="estante" tabindex="0" aria-label="Estante de cursos">
-    <div class="livro"><button aria-label="Virar a capa: Conflitos constantes"><div class="gira"><div class="capa c1 foto" style="--img:url(../img/teseu.jpg)"><small>curso</small><b>Conflitos constantes<em>e regulação emocional</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Conflitos constantes</b><p>Habilidades de regulação emocional para os conflitos que se repetem.</p></div></div></button></div>
-    <div class="livro"><button aria-label="Virar a capa: O mínimo que você precisa saber sobre sexualidade"><div class="gira"><div class="capa c2 foto" style="--img:url(../img/jardim.jpg);--pos:50% 60%"><small>curso</small><b>O mínimo<em>que você precisa saber sobre sexualidade</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Sexualidade</b><p>Gênero, função sexual, disfunções e parafilias.</p></div></div></button></div>
-    <div class="livro"><button aria-label="Virar a capa: Papéis de gênero"><div class="gira"><div class="capa c3 foto" style="--img:url(../img/lavadeiras.jpg);--pos:62% 50%"><small>curso</small><b>Papéis de gênero<em>e terapia de relacionamentos</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Papéis de gênero</b><p>Os termos e o manejo na terapia de casal.</p></div></div></button></div>
-    <div class="livro"><button aria-label="Virar a capa: Traição"><div class="gira"><div class="capa c4 foto" style="--img:url(../img/cupido.jpg);--pos:50% 25%"><small>curso</small><b>Traição<em>infidelidade e seus significados</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Traição</b><p>O que uma traição significa, a partir de Esther Perel.</p></div></div></button></div>
-    <div class="livro"><button aria-label="Virar a capa: Do que falamos quando falamos de amor"><div class="gira"><div class="capa c2 foto" style="--img:url(../img/bauer.jpg);--pos:75% 50%"><small>curso</small><b>Do que falamos<em>quando falamos de amor</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Do que falamos quando falamos de amor</b><p>O conto de Carver, o amor e o não dito.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: Conflitos constantes"><div class="gira"><div class="capa c1 foto" style="--img:url(../img/w/teseu-800.webp)"><small>curso</small><b>Conflitos constantes<em>e regulação emocional</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Conflitos constantes</b><p>Habilidades de regulação emocional para os conflitos que se repetem.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: O mínimo que você precisa saber sobre sexualidade"><div class="gira"><div class="capa c2 foto" style="--img:url(../img/w/jardim-800.webp);--pos:50% 60%"><small>curso</small><b>O mínimo<em>que você precisa saber sobre sexualidade</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Sexualidade</b><p>Gênero, função sexual, disfunções e parafilias.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: Papéis de gênero"><div class="gira"><div class="capa c3 foto" style="--img:url(../img/w/lavadeiras-800.webp);--pos:62% 50%"><small>curso</small><b>Papéis de gênero<em>e terapia de relacionamentos</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Papéis de gênero</b><p>Os termos e o manejo na terapia de casal.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: Traição"><div class="gira"><div class="capa c4 foto" style="--img:url(../img/w/cupido-800.webp);--pos:50% 25%"><small>curso</small><b>Traição<em>infidelidade e seus significados</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Traição</b><p>O que uma traição significa, a partir de Esther Perel.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: Do que falamos quando falamos de amor"><div class="gira"><div class="capa c2 foto" style="--img:url(../img/w/bauer-800.webp);--pos:75% 50%"><small>curso</small><b>Do que falamos<em>quando falamos de amor</em></b><img src="../img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Do que falamos quando falamos de amor</b><p>O conto de Carver, o amor e o não dito.</p></div></div></button></div>
     <div class="livro prox"><div class="gira"><div class="capa"><small>próximos</small><b>Um de cada vez</b><span>e a estante cresce</span></div></div></div>
   </div>
   <p class="dica">toque numa capa para virar · arraste para o lado</p>
@@ -381,7 +384,7 @@ footer a{color:var(--creme)}
 
 <section class="quem">
   <div class="wrap g">
-    <figure class="pol rv"><img src="../img/ilo.jpg" alt="Francisco Ilo" width="560" height="659" loading="lazy"><figcaption>Ilo</figcaption></figure>
+    <figure class="pol rv"><img decoding="async" class="f" src="../img/w/ilo.webp" alt="Francisco Ilo" width="560" height="659" loading="lazy"><figcaption>Ilo</figcaption></figure>
     <div class="rv d1">
       <h2>Quem <i>conduz</i></h2>
       <p class="big">Sou o Ilo, psicólogo e um curioso da vida e das relações humanas. No clube, levo o que estou estudando e a gente pensa junto.</p>
@@ -559,5 +562,6 @@ footer a{color:var(--creme)}
   }
 }
 </script>
+<script>document.querySelectorAll("img.f").forEach(function(i){var ok=function(){i.classList.add("ok")};if(i.complete&&i.naturalWidth)ok();else{i.addEventListener("load",ok);i.addEventListener("error",ok)}})</script>
 </body>
 </html>
