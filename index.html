@@ -161,6 +161,7 @@ h2 i{font-style:italic}
 .agora .ev .dia{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.05}
 .agora .ev p+p{opacity:.85;margin-top:6px}
 @media(min-width:860px){.agora .g{grid-template-columns:.8fr 1.2fr}}
+@media(max-width:700px){.agora .ev{grid-template-columns:1fr;gap:16px;padding:14px 14px 20px}.agora .ev .cap.foto{aspect-ratio:16/10;border-radius:14px}.agora .ev .cap.foto img{object-position:50% 22%}.agora .ev>div:last-child{padding:0 6px}}
 
 /* acervo */
 .acervo{padding:clamp(70px,9vw,110px) 0 50px}
@@ -185,6 +186,8 @@ h2 i{font-style:italic}
 .capa img{width:60px;opacity:.95}
 .verso{transform:rotateY(180deg);background:var(--creme);color:var(--verde);padding:22px;display:flex;flex-direction:column;justify-content:center;gap:8px;border:1px solid rgba(3,61,47,.15)}
 .verso b{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.4rem;line-height:1.05}
+.capa b em{display:block;font-style:italic;font-size:.62em;line-height:1.1;margin-top:4px;opacity:.9}
+@media(max-width:600px){.verso{padding:14px;gap:6px}.verso b{font-size:1.1rem}.verso p{font-size:.86rem;line-height:1.35;overflow-wrap:anywhere}}
 .c1{background:var(--verde2)}.c2{background:var(--vermelho)}.c3{background:var(--azul)}.c4{background:var(--tinta)}
 .livro.prox .capa{background:transparent;color:var(--verde);border:1.5px dashed rgba(3,61,47,.35);box-shadow:none}.livro.prox .capa::before{display:none}
 .dica{text-align:center;font-size:.9rem;color:#5d6b64}
@@ -345,7 +348,7 @@ footer a{color:var(--creme)}
     <h2 class="rv">Agora <i>no clube</i></h2>
     <div class="ev rv d1">
       <figure class="cap foto"><img src="img/teseu.jpg" alt="Teseu no labirinto, com o fio na mão, e o Minotauro espiando atrás do muro (Burne-Jones, 1861)" loading="lazy"></figure>
-      <div><p class="dia">Conflitos constantes e regulação emocional</p><p>Cinco encontros ao vivo sobre as brigas que se repetem: por que acontecem e como sair delas. Datas em breve.</p></div>
+      <div><p class="dia">Conflitos constantes e regulação emocional</p><p>Cinco encontros ao vivo para aprender habilidades de regulação emocional e lidar de outro jeito com os conflitos que se repetem. Datas em breve.</p></div>
     </div>
   </div>
 </section>
@@ -357,7 +360,7 @@ footer a{color:var(--creme)}
   </div>
   <!-- ACERVO: um .livro por curso -->
   <div class="estante" id="estante" tabindex="0" aria-label="Estante de cursos">
-    <div class="livro"><button aria-label="Virar a capa do curso 1"><div class="gira"><div class="capa c1 foto"><small>curso 1</small><b>Conflitos constantes</b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Conflitos constantes e regulação emocional</b><p>Cinco encontros sobre as brigas que se repetem.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa do curso 1"><div class="gira"><div class="capa c1 foto"><small>curso 1</small><b>Conflitos constantes<em>e regulação emocional</em></b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Conflitos constantes</b><p>Habilidades de regulação emocional para os conflitos que se repetem.</p></div></div></button></div>
     <div class="livro"><button aria-label="Virar a capa do curso 2"><div class="gira"><div class="capa c2"><small>curso gravado</small><b>Em breve</b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Curso 2</b><p>Tema anunciado no lançamento.</p></div></div></button></div>
     <div class="livro"><button aria-label="Virar a capa do curso 3"><div class="gira"><div class="capa c3"><small>curso gravado</small><b>Em breve</b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Curso 3</b><p>Tema anunciado no lançamento.</p></div></div></button></div>
     <div class="livro prox"><div class="gira"><div class="capa"><small>próximos</small><b>Um de cada vez</b><span>e a estante cresce</span></div></div></div>
