@@ -20,7 +20,9 @@
 <link rel="preload" as="image" href="img/w/pomar-1400.webp" imagesrcset="img/w/pomar-800.webp 800w, img/w/pomar-1400.webp 1400w, img/w/pomar-2000.webp 2000w" imagesizes="(min-width:1000px) 50vw, (min-width:860px) 60vw, 60vw" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-latin-400-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/alegreya-sans-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/birthstone-latin-400-normal.woff2" crossorigin>
 <style>
+@font-face{font-family:"IS Fallback";src:local("Times New Roman"),local("TimesNewRomanPSMT"),local("Times");size-adjust:94%}
 @font-face{font-family:"Alegreya Sans";font-weight:400;font-display:swap;src:url(fonts/alegreya-sans-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"Alegreya Sans";font-weight:700;font-display:swap;src:url(fonts/alegreya-sans-latin-700-normal.woff2) format("woff2")}
 @font-face{font-family:"Alegreya Sans";font-weight:800;font-display:swap;src:url(fonts/alegreya-sans-latin-800-normal.woff2) format("woff2")}
@@ -46,7 +48,7 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
 .hero-logo{position:relative;z-index:2;width:132px;margin:36px auto 0;animation:sobe .8s .1s both}
 .hero-text{position:relative;z-index:2;padding:0 28px 48px;text-align:center}
 .hero h1{font-weight:400;line-height:.92}
-.hero h1 .a{display:block;font-family:"Instrument Serif",Georgia,serif;font-size:2.9rem;animation:sobe .8s .25s both}
+.hero h1 .a{display:block;white-space:nowrap;font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:min(2.9rem,11.2vw);animation:sobe .8s .25s both}
 .hero h1 .b{display:block;font-family:"Birthstone",cursive;font-size:3.9rem;line-height:.85;color:var(--grama);animation:sobe .8s .4s both}
 .hero p{margin:18px auto 0;max-width:32ch;font-size:1.1rem;line-height:1.45;animation:sobe .8s .55s both}
 .hero p b{color:#fff}
@@ -58,13 +60,13 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
   .hero-right{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:56px 7vw 64px}
   .hero-logo{margin:0;width:150px}
   .hero-text{padding:0;text-align:left}
-  .hero h1 .a{font-size:4.6rem}.hero h1 .b{font-size:5.6rem}
+  .hero h1 .a{font-size:min(4.6rem,5vw)}.hero h1 .b{font-size:5.6rem}
   .hero p{margin:26px 0 0;font-size:1.3rem;max-width:30ch}
 }
 @media(max-width:859px){.hero-right{display:contents}}
 
 /* convite */
-.convite{font-weight:400;text-align:center;padding:64px 24px 6px;font-family:"Instrument Serif",Georgia,serif;font-size:2.2rem;line-height:1.05;color:var(--verde)}
+.convite{font-weight:400;text-align:center;padding:64px 24px 6px;font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:2.2rem;line-height:1.05;color:var(--verde)}
 .convite em{font-family:"Birthstone",cursive;font-style:normal;font-size:2.9rem;color:var(--vermelho)}
 @media(min-width:860px){.convite{padding-top:96px;font-size:2.9rem}.convite em{font-size:3.7rem}}
 
@@ -82,7 +84,7 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
 .card .estado.aberto{color:var(--verde)}.card .estado.aberto::before{background:var(--verde)}
 .card .tipo{font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
 .card h3{font-weight:400;line-height:.95;margin-top:6px;max-width:16ch}
-.card h3 .a{display:block;font-family:"Instrument Serif",Georgia,serif;font-size:2.1rem}
+.card h3 .a{display:block;font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:2.1rem}
 .card h3 .b{display:block;font-family:"Birthstone",cursive;font-size:2.4rem;line-height:.8;margin-top:4px;color:#fff}
 .c-clube h3 .b{color:var(--grama)}
 .card .cta{display:inline-block;margin-top:16px;padding:8px 18px;border-radius:999px;background:#fff;color:var(--cor,var(--verde));font-weight:800;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
@@ -97,7 +99,7 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
 /* frase */
 .quote{margin-top:72px;background:var(--verde);color:var(--creme);text-align:center;padding:84px 26px}
 .quote img{width:64px;margin:0 auto 24px;opacity:.9}
-.quote p{max-width:22ch;margin:0 auto;font-family:"Instrument Serif",Georgia,serif;font-size:2.2rem;line-height:1.12;text-wrap:balance}
+.quote p{max-width:22ch;margin:0 auto;font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:2.2rem;line-height:1.12;text-wrap:balance}
 .quote em{font-family:"Birthstone",cursive;font-style:normal;font-size:1.3em;line-height:.8;color:var(--grama)}
 @media(min-width:860px){.quote{padding:120px 40px;margin-top:96px}.quote p{font-size:3.4rem;max-width:24ch}}
 
