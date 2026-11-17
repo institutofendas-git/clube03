@@ -69,7 +69,7 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
 
 /* cartões */
 .botoes{max-width:1080px;margin:0 auto;padding:28px 20px 20px;display:grid;gap:16px}
-@media(min-width:700px){.botoes{grid-template-columns:repeat(6,1fr);gap:22px;padding-top:40px}.card{grid-column:span 3}.card.largo,.c-clube{grid-column:1 / -1}.card.largo .bg{width:62%}}
+@media(min-width:700px){.botoes{grid-template-columns:repeat(6,1fr);gap:22px;padding-top:40px}.card{grid-column:span 3}.card.largo{grid-column:1 / -1}.card.largo .bg{width:62%}}
 .card{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;min-height:230px;padding:26px 24px;border-radius:26px;overflow:hidden;
   text-decoration:none;color:var(--creme);isolation:isolate;background:var(--cor,var(--verde));box-shadow:0 18px 30px -20px rgba(3,30,22,.7);transition:transform .25s ease,box-shadow .25s ease}
 a.card:hover{transform:translateY(-3px);box-shadow:0 26px 38px -20px rgba(3,30,22,.75)}
@@ -90,20 +90,6 @@ a.card:hover .bg{transform:scale(1.04)}
 .card .cta::after{content:"→";display:inline-block;margin-left:8px;transition:transform .25s ease}
 a.card:hover .cta::after{transform:translateX(5px)}
 @media(min-width:860px){.card{min-height:270px;padding:32px 30px}.card h3 .a{font-size:2.4rem}.card h3 .b{font-size:2.7rem}}
-
-/* o cartão do clube, em destaque: quase preto, texturizado, enxuto */
-.c-clube{min-height:0;justify-content:center;background:#0d1512;padding:26px 24px 26px;gap:18px}
-.c-clube::after{content:"";position:absolute;inset:0;z-index:-1;background:url(img/w/textura.webp) 0 0/840px 464px repeat;opacity:.05}
-.c-clube .marca{display:block;text-decoration:none;color:inherit}
-.c-clube .logo{width:110px;margin-bottom:14px}
-.c-clube h3{max-width:none;font-family:"Instrument Serif",Georgia,serif;font-size:1.75rem;line-height:1.1}
-.c-clube h3 i{font-style:italic}
-.c-clube .marca:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
-.c-clube .lado{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
-.c-clube .preco{font-size:.95rem;opacity:.85}
-.c-clube .preco b{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.5rem;opacity:1;margin-right:2px}
-.c-clube .cta{margin-top:0;color:#0d1512;text-decoration:none}
-@media(min-width:860px){.c-clube{flex-direction:row;align-items:center;justify-content:space-between;padding:30px 36px}.c-clube h3{font-size:2.1rem}}
 
 /* frase */
 .quote{margin-top:72px;background:var(--verde);color:var(--creme);text-align:center;padding:84px 26px}
