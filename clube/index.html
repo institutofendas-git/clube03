@@ -275,7 +275,7 @@ footer a{color:var(--creme)}
   <div class="wrap">
     <a class="marca" href="../"><img src="../img/clube03-horiz-verde.svg" alt="Clube 03" width="1678" height="725"></a>
     <ul><li><a href="../#cursos">Cursos</a></li><li><a href="#clube">O clube</a></li><li><a href="#mes">Como funciona</a></li><li><a href="#acervo">Acervo</a></li><li><a href="#perguntas">Perguntas</a></li></ul>
-    <a class="btn" href="#socio" data-checkout>Quero entrar <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="btn" href="#socio" data-checkout>Quero saber quando abrir <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
   </div>
 </nav>
 
@@ -285,7 +285,7 @@ footer a{color:var(--creme)}
     <p class="serif rv" style="font-size:clamp(2.8rem,7vw,5.4rem);line-height:1.02;color:var(--verde);max-width:14ch;margin:0 auto;text-wrap:balance">Toda relação tem três histórias.</p>
     <p class="serif rv d1" style="font-size:clamp(1.6rem,3.6vw,2.5rem);line-height:1.15;color:var(--verde);max-width:30ch;margin:14px auto 0;text-wrap:balance">A sua, a do outro e <i>a que nasce entre vocês</i>.</p>
     <p class="sub rv d2">Aqui a gente estuda a terceira história. O Clube 03 é uma comunidade para olhar com mais clareza para as relações que fazem a sua vida: com quem você ama, com o trabalho, com o dinheiro, com a própria vida.</p>
-    <a class="btn rv d3" href="#socio" data-checkout>Quero entrar no clube <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="btn rv d3" href="#socio" data-checkout>Quero saber quando abrir <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
   </div>
 </section>
 
@@ -402,7 +402,7 @@ footer a{color:var(--creme)}
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>O grupo no WhatsApp e os comentários em cada encontro</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Certificado de cada curso, a pedido</li>
       </ul>
-      <a class="btn" href="#socio" data-checkout>Quero entrar no clube <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="btn" href="#socio" data-checkout>Quero saber quando abrir <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       <p class="obs">Abre em breve. Pela Hotmart, e você cancela quando quiser.</p>
     </div>
   </div>
@@ -419,7 +419,7 @@ footer a{color:var(--creme)}
   <div class="img" id="fechoImg" aria-hidden="true"></div>
   <div class="in">
     <p class="rv">Todo mundo precisa de um <i>terceiro lugar</i>.</p>
-    <a class="btn claro rv d1" href="#socio" data-checkout>Quero entrar <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="btn claro rv d1" href="#socio" data-checkout>Quero saber quando abrir <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
   </div>
 </section>
 </main>
@@ -434,7 +434,7 @@ footer a{color:var(--creme)}
 <script>
 {
   const CHECKOUT = ""; // TROCAR: link de assinatura da Hotmart
-  const LISTA = "";    // TROCAR: link da lista de espera, usado enquanto a assinatura não abre
+  const LISTA = "https://chat.whatsapp.com/IKpizD2mzJYLU2VS2CQmG7";    // TROCAR: link da lista de espera, usado enquanto a assinatura não abre
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (CHECKOUT || LISTA) $$('[data-checkout]').forEach(a => { a.href = CHECKOUT || LISTA; a.target = '_blank'; a.rel = 'noopener'; });

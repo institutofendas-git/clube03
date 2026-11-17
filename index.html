@@ -211,7 +211,7 @@ footer a{color:var(--creme)}
 
 <script>
 (() => {
-  const LISTA = ""; // TROCAR: link da lista de espera. Enquanto estiver vazio, o botão leva ao Instagram.
+  const LISTA = "https://chat.whatsapp.com/IKpizD2mzJYLU2VS2CQmG7"; // TROCAR: link da lista de espera. Enquanto estiver vazio, o botão leva ao Instagram.
   const RESERVA = "https://www.instagram.com/fco.ilo/";
   document.querySelectorAll('[data-lista]').forEach(a => { a.href = LISTA || RESERVA; a.target = '_blank'; a.rel = 'noopener'; });
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
