@@ -102,15 +102,14 @@ h1 i,h2 i,h3 i{font-style:italic}
 .livro{background:var(--verde);color:var(--creme);padding:clamp(70px,9vw,120px) 0}
 .livro .g{display:grid;gap:48px;align-items:start}
 .livro h2{color:var(--creme)}
-.livro .tomo{width:min(180px,46vw);aspect-ratio:2/3;margin:0 auto;border-radius:4px 14px 14px 4px;background:var(--vermelho);color:var(--creme);padding:26px 22px 22px 30px;display:flex;flex-direction:column;justify-content:space-between;position:relative;transform:rotate(-3deg);box-shadow:inset 10px 0 0 rgba(0,0,0,.18),0 30px 44px -22px rgba(0,0,0,.7)}
-.livro .tomo::after{content:"";position:absolute;inset:14px 14px 14px 24px;border:1px solid rgba(253,238,221,.35);border-radius:2px 8px 8px 2px;pointer-events:none}
-.livro .tomo b{font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-weight:400;font-size:1.7rem;line-height:1.02}
-.livro .tomo span{font-weight:800;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
 .livro .big{font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:clamp(1.45rem,2.6vw,1.9rem);line-height:1.25;margin-top:20px;max-width:34ch}
+.livro .capa-livro{display:block;width:min(200px,52vw);margin:0 auto;transform:rotate(-3deg);transition:transform .5s var(--ease)}
+.livro .capa-livro img{width:100%;border-radius:3px 6px 6px 3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 30px 44px -20px rgba(0,0,0,.75)}
+.livro .capa-livro:hover{transform:rotate(-1deg)}
 .livro .tres{display:grid;gap:26px;margin-top:40px}
 .livro .tres h3{font-size:1.75rem;line-height:1.1;font-style:italic;color:#f1b6a6}
 .livro .tres p{margin-top:8px;opacity:.92;max-width:44ch}
-@media(min-width:900px){.livro .g{grid-template-columns:300px minmax(0,1fr);gap:70px}.livro .tomo{margin:10px 0 0;width:250px}.livro .tomo b{font-size:2.2rem}.livro .tres{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}}
+@media(min-width:900px){.livro .g{grid-template-columns:300px minmax(0,1fr);gap:70px}.livro .capa-livro{margin:10px 0 0;width:260px}.livro .tres{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}}
 .passo .hab{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .passo .hab span{font-size:.78rem;font-weight:700;letter-spacing:.03em;padding:3px 11px;border-radius:999px;border:1px solid rgba(186,43,43,.45);color:var(--vermelho)}
 
@@ -214,7 +213,7 @@ picture{display:contents}
 
 <section class="livro">
   <div class="wrap g">
-    <div class="tomo rv" aria-hidden="true"><b>Casais em constante conflito</b><span>Alan E. Fruzzetti</span></div>
+    <picture class="capa-livro rv"><source type="image/avif" srcset="../img/w/livro-fruzzetti.avif"><img src="../img/w/livro-fruzzetti.webp" alt="Capa do livro Casais em constante conflito, de Alan E. Fruzzetti (Hogrefe)" width="443" height="625" loading="lazy" decoding="async"></picture>
     <div>
       <h2 class="rv">O livro e as <i>habilidades</i></h2>
       <p class="big rv d1">Alan Fruzzetti é um psicólogo americano que levou a terapia comportamental dialética para casais e famílias. No livro, ele parte de uma ideia simples: quando a emoção sobe rápido demais, ninguém escuta ninguém, e a briga vira sempre a mesma.</p>
