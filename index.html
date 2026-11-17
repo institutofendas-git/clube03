@@ -456,7 +456,7 @@ footer a{color:var(--creme)}
   /* fio que se desenha ao rolar */
   /* o fio: nasce na etiqueta "amor", passa por todas e termina amarrado em "a gente mesmo" */
   const col = $('#colagem'), fioSvg = $('#fioSvg'), fio = $('#fio');
-  let fioL = 0, fioMarcas = [];
+  let fioL = 0;
   /* pontos do caminho: etiqueta (passa pelo ponto dela) ou [x%, y%] da colagem (de preferência atrás das fotos) */
   const ROTA = {
     larga: ['.t1', [9, 30], [17, 64], '.t2', [44, 82], '.t3', [55, 40], '.t4', [80, 28], [86, 58], '.t5', [48, 99], '.t6'],
@@ -485,16 +485,15 @@ footer a{color:var(--creme)}
     });
     fio.setAttribute('d', curva(P));
     fioL = fio.getTotalLength(); fio.style.strokeDasharray = fioL;
-    fioMarcas = []; let maxY = 0; const N = 160;
-    for (let i = 0; i <= N; i++) { const q = fio.getPointAtLength(fioL * i / N); maxY = Math.max(maxY, q.y); fioMarcas.push(maxY); }
     desenhaFio();
   };
   const desenhaFio = () => {
     if (!fioL) return;
     if (still) { fio.style.strokeDashoffset = 0; return; }
-    const linha = innerHeight * .75 - col.getBoundingClientRect().top;
-    let i = 0; while (i < fioMarcas.length - 1 && fioMarcas[i + 1] <= linha) i++;
-    fio.style.strokeDashoffset = fioL * (1 - (fioMarcas[0] > linha ? 0 : i / (fioMarcas.length - 1)));
+    /* desenha em ritmo constante: começa quando a colagem entra na tela e termina quando o fim dela chega a 3/4 da altura */
+    const r = col.getBoundingClientRect(), vh = innerHeight;
+    const p = Math.min(1, Math.max(0, (vh * .9 - r.top) / (r.height + vh * .15)));
+    fio.style.strokeDashoffset = fioL * (1 - p);
   };
   let tFio; addEventListener('resize', () => { clearTimeout(tFio); tFio = setTimeout(montaFio, 150); });
   addEventListener('load', montaFio); if (document.fonts) document.fonts.ready.then(montaFio); montaFio();
