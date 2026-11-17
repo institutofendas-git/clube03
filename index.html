@@ -156,6 +156,8 @@ h2 i{font-style:italic}
 .agora .ev .cap{aspect-ratio:2/3;border-radius:4px 10px 10px 4px;background:var(--vermelho);padding:14px 12px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 6px 0 0 rgba(0,0,0,.2)}
 .agora .ev .cap b{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.25rem;line-height:1}
 .agora .ev .cap small{font-weight:800;font-size:.68rem}
+.agora .ev .cap.foto{padding:0;overflow:hidden;aspect-ratio:4/5;background:var(--tinta)}.agora .ev .cap.foto img{width:100%;height:100%;object-fit:cover}
+.capa.foto{background:linear-gradient(180deg,rgba(3,30,22,.1) 30%,rgba(3,30,22,.85)),url(img/teseu.jpg) 40% 30%/cover!important}
 .agora .ev .dia{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.05}
 .agora .ev p+p{opacity:.85;margin-top:6px}
 @media(min-width:860px){.agora .g{grid-template-columns:.8fr 1.2fr}}
@@ -329,7 +331,7 @@ footer a{color:var(--creme)}
     <div class="linhas" id="linhas">
       <figure class="flut" id="flut" aria-hidden="true"><img id="flutImg" src="img/foto-livro.jpg" alt=""></figure>
       <button class="linha on" data-img="img/foto-livro.jpg"><span class="n">1</span><span class="t">A leitura chega</span><span class="mais" aria-hidden="true"></span><span class="d">Antes de cada encontro, você recebe um material para ler: um conto, uma crônica, um capítulo.</span></button>
-      <button class="linha" data-img="img/foto-gaivotas.jpg"><span class="n">2</span><span class="t">O encontro</span><span class="mais" aria-hidden="true"></span><span class="d">Toda semana, numa terça ou num sábado de manhã, ao vivo, por uma hora e meia. A gente discute esse material juntos. Se precisar mudar o dia, você fica sabendo antes.</span></button>
+      <button class="linha" data-img="img/foto-gaivotas.jpg"><span class="n">2</span><span class="t">O encontro</span><span class="mais" aria-hidden="true"></span><span class="d">Toda semana, numa terça ou num sábado de manhã, ao vivo, por duas horas, com um intervalo de dez minutos. A gente discute esse material juntos. Se precisar mudar o dia, você fica sabendo antes.</span></button>
       <button class="linha" data-img="img/foto-mar.jpg"><span class="n">3</span><span class="t">A gravação fica</span><span class="mais" aria-hidden="true"></span><span class="d">Se não deu para estar ao vivo, ou se quiser rever, a gravação fica no acervo.</span></button>
       <button class="linha" data-img="img/ilo.jpg"><span class="n">4</span><span class="t">A conversa continua</span><span class="mais" aria-hidden="true"></span><span class="d">Nos comentários de cada encontro, a discussão segue por outros temas que atravessam e conversam com esse.</span></button>
       <button class="linha" data-img="img/pomar.jpg"><span class="n">5</span><span class="t">Um curso dá lugar a outro</span><span class="mais" aria-hidden="true"></span><span class="d">Os encontros formam um curso, com um tema do começo ao fim. Quando ele termina, vem o próximo, e o anterior vai para a estante.</span></button>
@@ -342,8 +344,8 @@ footer a{color:var(--creme)}
   <div class="wrap g">
     <h2 class="rv">Agora <i>no clube</i></h2>
     <div class="ev rv d1">
-      <div class="cap"><small>curso ao vivo</small><b>Em breve</b></div>
-      <div><p class="dia">O próximo curso</p><p>Tema, datas e leituras anunciados no lançamento.</p></div>
+      <figure class="cap foto"><img src="img/teseu.jpg" alt="Teseu no labirinto, com o fio na mão, e o Minotauro espiando atrás do muro (Burne-Jones, 1861)" loading="lazy"></figure>
+      <div><p class="dia">Conflitos constantes e regulação emocional</p><p>Cinco encontros ao vivo sobre as brigas que se repetem: por que acontecem e como sair delas. Datas em breve.</p></div>
     </div>
   </div>
 </section>
@@ -355,7 +357,7 @@ footer a{color:var(--creme)}
   </div>
   <!-- ACERVO: um .livro por curso -->
   <div class="estante" id="estante" tabindex="0" aria-label="Estante de cursos">
-    <div class="livro"><button aria-label="Virar a capa do curso 1"><div class="gira"><div class="capa c1"><small>curso gravado</small><b>Em breve</b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Curso 1</b><p>Tema anunciado no lançamento.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa do curso 1"><div class="gira"><div class="capa c1 foto"><small>curso 1</small><b>Conflitos constantes</b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Conflitos constantes e regulação emocional</b><p>Cinco encontros sobre as brigas que se repetem.</p></div></div></button></div>
     <div class="livro"><button aria-label="Virar a capa do curso 2"><div class="gira"><div class="capa c2"><small>curso gravado</small><b>Em breve</b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Curso 2</b><p>Tema anunciado no lançamento.</p></div></div></button></div>
     <div class="livro"><button aria-label="Virar a capa do curso 3"><div class="gira"><div class="capa c3"><small>curso gravado</small><b>Em breve</b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Curso 3</b><p>Tema anunciado no lançamento.</p></div></div></button></div>
     <div class="livro prox"><div class="gira"><div class="capa"><small>próximos</small><b>Um de cada vez</b><span>e a estante cresce</span></div></div></div>
@@ -383,7 +385,7 @@ footer a{color:var(--creme)}
     <div class="rv d1">
       <h2>Puxa uma <i>cadeira</i></h2>
       <ul class="inc">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Um encontro ao vivo por semana, de 1h30, numa terça ou num sábado de manhã</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Um encontro ao vivo por semana, de 2h, numa terça ou num sábado de manhã</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>A leitura de cada encontro</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Todos os cursos gravados, desde o primeiro dia</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>O grupo no WhatsApp e os comentários em cada encontro</li>
@@ -430,7 +432,7 @@ footer a{color:var(--creme)}
     ['Preciso saber alguma coisa antes?', 'Nada. Cada curso começa do começo. Se você chegar sem ter lido a leitura, tudo bem: provavelmente vai sair com vontade de ler.'],
     ['Não tenho tempo para mais uma coisa.', 'Então não coloque mais uma coisa na sua vida. Se quiser, arrume tempo: tire outra coisa daí. Eu vou estar lá.'],
     ['E se eu assinar e não assistir, como os cursos que comprei?', 'A ideia é que o clube seja um lugar para exercitar, pensar a vida e as nossas relações. Eu acharia triste você assinar e não assistir. E, se você não vai assistir, tem todo o motivo para não assinar.'],
-    ['Quando são os encontros?', 'Toda semana, ao vivo, com uma hora e meia: numa terça ou num sábado de manhã. Se precisar mudar o dia, você fica sabendo antes. E eu tento cumprir o horário. Juro que tento.'],
+    ['Quando são os encontros?', 'Toda semana, ao vivo, com duas horas e um intervalo de dez minutos: numa terça ou num sábado de manhã. Se precisar mudar o dia, você fica sabendo antes. E eu tento cumprir o horário. Juro que tento.'],
     ['Perdi o encontro ao vivo. E agora?', 'A gravação entra no acervo, e você assiste quando puder.'],
     ['Entrei no meio de um curso. E aí?', 'Os encontros anteriores estão gravados. Dá para assistir antes de chegar ao vivo ou pegar o bonde andando e voltar depois.'],
     ['Por onde começo depois de assinar?', 'Pelo curso que está acontecendo, se quiser acompanhar ao vivo. No acervo, por onde der vontade: cada curso se sustenta sozinho. Escolha a capa que mais te chamar.'],
