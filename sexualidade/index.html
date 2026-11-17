@@ -97,47 +97,9 @@ h1 i,h2 i,h3 i{font-style:italic}
 .passo p{grid-column:2;color:#4a5852;font-size:1.02rem}
 @media(min-width:1000px){.passo{grid-template-columns:60px minmax(0,1.3fr) minmax(0,.7fr);align-items:center}.passo p{grid-column:3}}
 
-/* o mapa: termos e cartões */
-.livro{background:var(--verde);color:var(--creme);padding:clamp(70px,9vw,120px) 0}
-.livro .g{display:grid;gap:40px;align-items:center}
-.livro h2{color:var(--creme)}
-.livro .capa-livro{display:block;width:min(170px,44vw);margin:0 auto;transform:rotate(-3deg);transition:transform .5s var(--ease)}
-.livro .capa-livro img{width:100%;border-radius:3px 6px 6px 3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 30px 44px -20px rgba(0,0,0,.75)}
-.livro .capa-livro:hover{transform:rotate(-1deg)}
-.livro .big{font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.12;margin-top:18px;max-width:22ch}
-.livro .big i{color:#f1b6a6}
-.livro .autor{margin-top:16px;font-size:.98rem;opacity:.75;max-width:46ch}
-.livro .tres{display:grid;gap:16px;margin-top:56px}
-.livro .q{background:rgba(253,238,221,.07);border:1px solid rgba(253,238,221,.16);border-radius:26px;padding:26px 24px 28px}
-.livro .q .k{display:inline-block;font-weight:800;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:#f1b6a6}
-.livro .q .r{font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:2rem;line-height:1.05;margin-top:12px}
-.livro .q .d{font-size:.98rem;opacity:.8;margin-top:12px}
-.livro .q ul{list-style:none;margin-top:14px;display:grid;gap:8px}
-.livro .q ul:not(.ok) li{padding-left:18px;position:relative;font-size:.98rem}
-.livro .q ul:not(.ok) li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:1.5px;background:var(--vermelho)}
-.livro .q ul.ok li{display:flex;gap:10px;align-items:flex-start;font-size:.98rem}
-.livro .q ul.ok svg{flex:none;width:18px;height:18px;margin-top:4px;color:#f1b6a6}
-.livro .q ul.ok li.psi{margin-top:6px;padding-top:12px;border-top:1px solid rgba(253,238,221,.18);opacity:.85}
-.livro .duas{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.livro .duas span{padding:7px 15px;border-radius:999px;font-weight:700;font-size:.9rem}
-.livro .duas .calma{background:var(--azul);color:#fff}
-.livro .duas .fogo{background:var(--vermelho);color:var(--creme)}
-@media(min-width:900px){.livro .g{grid-template-columns:240px minmax(0,1fr);gap:64px}.livro .capa-livro{width:220px;margin:0}.livro .tres{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.livro .q{padding:30px 28px 32px}}
 .passo .hab{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .passo .hab span{font-size:.78rem;font-weight:700;letter-spacing:.03em;padding:3px 11px;border-radius:999px;border:1px solid rgba(186,43,43,.45);color:var(--vermelho)}
 
-.livro .quatro{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:34px}
-.livro .quatro div{border-radius:22px;padding:20px 18px 22px;background:var(--creme);color:var(--verde)}
-.livro .quatro div:nth-child(2){background:#f1b6a6}.livro .quatro div:nth-child(3){background:var(--azul);color:#fff}.livro .quatro div:nth-child(4){background:var(--vermelho);color:var(--creme)}
-.livro .quatro b{display:block;font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-weight:400;font-size:1.9rem;line-height:1}
-.livro .quatro span{display:block;margin-top:10px;font-size:.95rem;line-height:1.35}
-.livro .junta{margin-top:26px;font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.2;max-width:34ch}
-.livro .junta i{color:#f1b6a6}
-.livro .ciclo{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:14px}
-.livro .ciclo span{padding:6px 13px;border-radius:999px;background:rgba(253,238,221,.12);font-weight:700;font-size:.88rem}
-.livro .ciclo em{font-style:normal;color:#f1b6a6;font-weight:800}
-.livro .ciclo span.v{background:var(--vermelho)}
-@media(min-width:900px){.livro .quatro{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.livro .quatro div{padding:24px 22px 26px}}
 .passo .hab{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .passo .hab span{font-size:.78rem;font-weight:700;letter-spacing:.03em;padding:3px 11px;border-radius:999px;border:1px solid rgba(186,43,43,.45);color:var(--vermelho)}
 
@@ -234,39 +196,22 @@ picture{display:contents}
 <section class="abre">
   <div class="wrap">
     <svg class="fio-h rv" viewBox="0 0 420 24" aria-hidden="true"><path d="M2 14 C 80 2, 140 26, 210 12 S 340 2, 418 12" fill="none" stroke="#BA2B2B" stroke-width="1.6" stroke-linecap="round"/></svg>
-    <p class="grande rv">Para falar de <i>sexo</i> sem rodeio e sem susto.</p>
+    <p class="grande rv">Para falar de <i>sexo</i> sem rodeio e sem vergonha.</p>
     <p class="sub rv d1">Em cinco encontros: os nomes das coisas, como o corpo responde, quando a resposta não vem, as parafilias, e uma conversa sobre o que aparece na prática.</p>
     <div class="para rv d2"><span class="tag">para psicólogos</span><span class="tag">para quem quiser aprender</span></div>
   </div>
 </section>
 
-<section class="livro">
-  <div class="wrap">
-    <h2 class="rv">Quatro palavras que <i>não são a mesma coisa</i></h2>
-    <div class="quatro">
-      <div class="rv d1"><b>Sexo</b><span>o corpo: as características biológicas, e também o ato</span></div>
-      <div class="rv d1"><b>Gênero</b><span>o que a cultura espera de quem é lido como homem ou mulher</span></div>
-      <div class="rv d2"><b>Identidade de gênero</b><span>como a pessoa se reconhece: cis, trans, travesti, não binária</span></div>
-      <div class="rv d2"><b>Orientação sexual</b><span>por quem existe desejo: hétero, homo, bi, pan, assexual</span></div>
-    </div>
-    <p class="junta rv d1">A <i>sexualidade</i> junta tudo isso com desejo, prazer, fantasia e vínculo. E muda ao longo da vida.</p>
-    <div class="tres">
-      <div class="q rv d1"><span class="k">função e disfunção</span><p class="r">Falhar uma vez não é <i>transtorno.</i></p><p class="d">Mas uma falha pode virar um ciclo:</p><div class="ciclo"><span>cobrança</span><em>→</em><span>o corpo vigiado</span><em>→</em><span class="v">falha</span><em>→</em><span>mais cobrança</span></div></div>
-      <div class="q rv d2"><span class="k">parafilias</span><p class="r">Interesse diferente não é <i>doença.</i></p><p class="d">O que separa uma parafilia de um transtorno:</p><div class="duas"><span class="calma">consentimento</span><span class="fogo">sofrimento</span><span class="fogo">dano a alguém</span></div></div>
-      <div class="q rv d3"><span class="k">para que serve</span><p class="r">Para falar de sexo <i>sem susto.</i></p><ul class="ok"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>usar os termos sem medo de errar</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>separar mito de informação</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>saber o que perguntar e quando encaminhar</li><li class="psi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>para psicólogos: trazer o sexo para dentro da sessão</li></ul></div>
-    </div>
-  </div>
-</section>
 <section class="enc" id="encontros">
   <div class="wrap">
     <div class="topo-e"><h2 class="rv">Os cinco <i>encontros</i></h2><p class="rv d1">Do vocabulário à clínica, um encontro de cada vez.</p></div>
     <div class="trilha" id="trilha">
       <svg aria-hidden="true"><path id="fio" fill="none" stroke="#BA2B2B" stroke-width="2" stroke-linecap="round"/></svg>
-      <div class="passo"><span class="n">1</span><h3>Gênero, sexualidade e <i>os nomes das coisas</i></h3><p>O que cada palavra quer dizer, de onde vem e o que acontece quando ela vira estigma.<span class="hab"><span>sexo e gênero</span><span>cis e trans</span><span>travesti, drag, crossdresser</span><span>orientação sexual</span><span>interseccionalidade</span></span></p></div>
-      <div class="passo"><span class="n">2</span><h3>Como o corpo <i>responde</i></h3><p>Como funciona a resposta sexual, por que o desejo nem sempre vem primeiro e para que serve o sexo na vida de cada um.<span class="hab"><span>resposta sexual</span><span>desejo e excitação</span><span>para que serve o sexo</span><span>o que é uma disfunção</span></span></p></div>
-      <div class="passo"><span class="n">3</span><h3>Quando a resposta <i>não vem</i></h3><p>Cada dificuldade, os mitos que a alimentam e como trazer isso para a conversa.<span class="hab"><span>desejo</span><span>ereção e ejaculação</span><span>orgasmo</span><span>dor na penetração</span><span>mitos sobre sexo</span></span></p></div>
-      <div class="passo"><span class="n">4</span><h3>Parafilias e <i>transtornos parafílicos</i></h3><p>Parafilia, fetiche, fantasia e transtorno não são a mesma coisa. Como acolher sem julgar.<span class="hab"><span>parafilia</span><span>fetiche e fantasia</span><span>consentimento</span><span>acolhimento</span></span></p></div>
-      <div class="passo"><span class="n">5</span><h3>Encontro de <i>discussão</i></h3><p>Casos clínicos para pensar junto e as dúvidas que ficaram.<span class="hab"><span>casos</span><span>dúvidas</span></span></p></div>
+      <div class="passo"><span class="n">1</span><h3>Gênero, sexualidade e <i>os nomes das coisas</i></h3><p>O que cada palavra quer dizer, de onde vem e o que acontece quando vira estigma.<span class="hab"><span>sexo</span><span>gênero</span><span>identidade de gênero</span><span>orientação sexual</span><span>cis e trans</span><span>travesti, drag, crossdresser</span><span>estigma e despatologização</span><span>interseccionalidade</span></span></p></div>
+      <div class="passo"><span class="n">2</span><h3>Como o corpo <i>responde</i></h3><p>Como funciona a resposta sexual e para que serve o sexo na vida de cada um.<span class="hab"><span>resposta sexual linear e circular</span><span>intimidade e desejo</span><span>ciclo da falha</span><span>funções do sexo</span><span>o que é disfunção (DSM-5 e CID-11)</span></span></p></div>
+      <div class="passo"><span class="n">3</span><h3>Quando a resposta <i>não vem</i></h3><p>Cada dificuldade, os mitos que a alimentam e como trazer o assunto para a sessão.<span class="hab"><span>desejo</span><span>excitação e ereção</span><span>ejaculação</span><span>orgasmo</span><span>dor na penetração</span><span>mitos sobre sexo</span><span>roteiros sexuais</span><span>como perguntar sobre sexo</span></span></p></div>
+      <div class="passo"><span class="n">4</span><h3>Parafilias e <i>transtornos parafílicos</i></h3><p>Onde fica a linha entre uma diferença e um sofrimento.<span class="hab"><span>parafilia</span><span>fetiche e fantasia</span><span>transtorno parafílico</span><span>consentimento</span><span>sofrimento e dano</span><span>acolhimento sem julgamento</span></span></p></div>
+      <div class="passo"><span class="n">5</span><h3>Encontro de <i>discussão</i></h3><p>Casos clínicos para pensar junto e as dúvidas que ficaram.<span class="hab"><span>casos clínicos</span><span>dúvidas</span></span></p></div>
     </div>
   </div>
 </section>
