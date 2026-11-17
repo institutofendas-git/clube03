@@ -70,13 +70,11 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
 /* cartões */
 .botoes{max-width:1080px;margin:0 auto;padding:28px 20px 20px;display:grid;gap:16px}
 @media(min-width:700px){.botoes{grid-template-columns:repeat(6,1fr);gap:22px;padding-top:40px}.card{grid-column:span 3}.card.largo{grid-column:1 / -1}.card.largo .bg{width:62%}}
-.card{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;min-height:230px;padding:26px 24px;border-radius:26px;overflow:hidden;
+.card{-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;min-height:230px;padding:26px 24px;border-radius:26px;overflow:hidden;
   text-decoration:none;color:var(--creme);isolation:isolate;background:var(--cor,var(--verde));box-shadow:0 18px 30px -20px rgba(3,30,22,.7);transition:transform .25s ease,box-shadow .25s ease}
-a.card:hover{transform:translateY(-3px);box-shadow:0 26px 38px -20px rgba(3,30,22,.75)}
 .card .bg{position:absolute;z-index:-2;top:0;right:0;height:100%;width:78%;object-fit:cover;object-position:var(--pos,50% 40%);
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 58%);mask-image:linear-gradient(90deg,transparent,#000 58%);transition:transform .6s ease;transform-origin:right center}
 .card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.38))}
-a.card:hover .bg{transform:scale(1.04)}
 .card .estado{position:absolute;top:18px;right:18px;display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:var(--papel);color:var(--vermelho);
   font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 6px 12px -8px rgba(0,0,0,.5)}
 .card .estado::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--vermelho)}
@@ -88,9 +86,13 @@ a.card:hover .bg{transform:scale(1.04)}
 .c-clube h3 .b{color:var(--grama)}
 .card .cta{display:inline-block;margin-top:16px;padding:8px 18px;border-radius:999px;background:#fff;color:var(--cor,var(--verde));font-weight:800;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
 .card .cta::after{content:"→";display:inline-block;margin-left:8px;transition:transform .25s ease}
-a.card:hover .cta::after{transform:translateX(5px)}
 @media(min-width:860px){.card{min-height:270px;padding:32px 30px}.card h3 .a{font-size:2.4rem}.card h3 .b{font-size:2.7rem}}
 
+@media(hover:hover) and (pointer:fine){
+  a.card:hover{transform:translateY(-3px);box-shadow:0 26px 38px -20px rgba(3,30,22,.75)}
+  a.card:hover .bg{transform:scale(1.04)}
+  a.card:hover .cta::after{transform:translateX(5px)}
+}
 /* frase */
 .quote{margin-top:72px;background:var(--verde);color:var(--creme);text-align:center;padding:84px 26px}
 .quote img{width:64px;margin:0 auto 24px;opacity:.9}
