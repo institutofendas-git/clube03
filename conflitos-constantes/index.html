@@ -100,16 +100,30 @@ h1 i,h2 i,h3 i{font-style:italic}
 
 /* o livro e as habilidades */
 .livro{background:var(--verde);color:var(--creme);padding:clamp(70px,9vw,120px) 0}
-.livro .g{display:grid;gap:48px;align-items:start}
+.livro .g{display:grid;gap:40px;align-items:center}
 .livro h2{color:var(--creme)}
-.livro .big{font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:clamp(1.45rem,2.6vw,1.9rem);line-height:1.25;margin-top:20px;max-width:34ch}
-.livro .capa-livro{display:block;width:min(200px,52vw);margin:0 auto;transform:rotate(-3deg);transition:transform .5s var(--ease)}
+.livro .capa-livro{display:block;width:min(170px,44vw);margin:0 auto;transform:rotate(-3deg);transition:transform .5s var(--ease)}
 .livro .capa-livro img{width:100%;border-radius:3px 6px 6px 3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 30px 44px -20px rgba(0,0,0,.75)}
 .livro .capa-livro:hover{transform:rotate(-1deg)}
-.livro .tres{display:grid;gap:26px;margin-top:40px}
-.livro .tres h3{font-size:1.75rem;line-height:1.1;font-style:italic;color:#f1b6a6}
-.livro .tres p{margin-top:8px;opacity:.92;max-width:44ch}
-@media(min-width:900px){.livro .g{grid-template-columns:300px minmax(0,1fr);gap:70px}.livro .capa-livro{margin:10px 0 0;width:260px}.livro .tres{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}}
+.livro .big{font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.12;margin-top:18px;max-width:22ch}
+.livro .big i{color:#f1b6a6}
+.livro .autor{margin-top:16px;font-size:.98rem;opacity:.75;max-width:46ch}
+.livro .tres{display:grid;gap:16px;margin-top:56px}
+.livro .q{background:rgba(253,238,221,.07);border:1px solid rgba(253,238,221,.16);border-radius:26px;padding:26px 24px 28px}
+.livro .q .k{display:inline-block;font-weight:800;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:#f1b6a6}
+.livro .q .r{font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:2rem;line-height:1.05;margin-top:12px}
+.livro .q .d{font-size:.98rem;opacity:.8;margin-top:12px}
+.livro .q ul{list-style:none;margin-top:14px;display:grid;gap:8px}
+.livro .q ul:not(.ok) li{padding-left:18px;position:relative;font-size:.98rem}
+.livro .q ul:not(.ok) li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:1.5px;background:var(--vermelho)}
+.livro .q ul.ok li{display:flex;gap:10px;align-items:flex-start;font-size:.98rem}
+.livro .q ul.ok svg{flex:none;width:18px;height:18px;margin-top:4px;color:#f1b6a6}
+.livro .q ul.ok li.psi{margin-top:6px;padding-top:12px;border-top:1px solid rgba(253,238,221,.18);opacity:.85}
+.livro .duas{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.livro .duas span{padding:7px 15px;border-radius:999px;font-weight:700;font-size:.9rem}
+.livro .duas .calma{background:var(--azul);color:#fff}
+.livro .duas .fogo{background:var(--vermelho);color:var(--creme)}
+@media(min-width:900px){.livro .g{grid-template-columns:240px minmax(0,1fr);gap:64px}.livro .capa-livro{width:220px;margin:0}.livro .tres{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.livro .q{padding:30px 28px 32px}}
 .passo .hab{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .passo .hab span{font-size:.78rem;font-weight:700;letter-spacing:.03em;padding:3px 11px;border-radius:999px;border:1px solid rgba(186,43,43,.45);color:var(--vermelho)}
 
@@ -212,16 +226,19 @@ picture{display:contents}
 </section>
 
 <section class="livro">
-  <div class="wrap g">
-    <picture class="capa-livro rv"><source type="image/avif" srcset="../img/w/livro-fruzzetti.avif"><img src="../img/w/livro-fruzzetti.webp" alt="Capa do livro Casais em constante conflito, de Alan E. Fruzzetti (Hogrefe)" width="443" height="625" loading="lazy" decoding="async"></picture>
-    <div>
-      <h2 class="rv">O livro e as <i>habilidades</i></h2>
-      <p class="big rv d1">Alan Fruzzetti é um psicólogo americano que levou a terapia comportamental dialética para casais e famílias. No livro, ele parte de uma ideia simples: quando a emoção sobe rápido demais, ninguém escuta ninguém, e a briga vira sempre a mesma.</p>
-      <div class="tres">
-        <div class="rv d1"><h3>O que é uma habilidade</h3><p>Não é truque nem frase pronta. É um jeito de agir que se aprende e se treina: perceber o que você está sentindo antes de responder, dizer isso com precisão, achar o que faz sentido na fala do outro.</p></div>
-        <div class="rv d2"><h3>O que é regulação emocional</h3><p>É conseguir sentir sem ser arrastado pelo que sente. Num casal, ela não acontece sozinha: a resposta de um acalma ou incendeia o outro. Por isso o curso olha para os dois lados da conversa.</p></div>
-        <div class="rv d3"><h3>Para que serve</h3><p>Para a briga parar de escalar. Para conseguir falar do que importa sem virar guerra, se sentir entendido e consertar quando der errado. Para psicólogos, é um mapa para trabalhar isso com casais na clínica.</p></div>
+  <div class="wrap">
+    <div class="g">
+      <picture class="capa-livro rv"><source type="image/avif" srcset="../img/w/livro-fruzzetti.avif"><img src="../img/w/livro-fruzzetti.webp" alt="Capa do livro Casais em constante conflito, de Alan E. Fruzzetti (Hogrefe)" width="443" height="625" loading="lazy" decoding="async"></picture>
+      <div>
+        <h2 class="rv">O livro e as <i>habilidades</i></h2>
+        <p class="big rv d1">Quando a emoção sobe rápido demais, <i>ninguém escuta ninguém</i>, e a briga vira sempre a mesma.</p>
+        <p class="autor rv d2">A ideia central do livro de Alan Fruzzetti, psicólogo que levou a terapia comportamental dialética para casais e famílias.</p>
       </div>
+    </div>
+    <div class="tres">
+      <div class="q rv d1"><span class="k">o que é uma habilidade</span><p class="r">Um jeito de agir <i>que se treina.</i></p><p class="d">Não é truque nem frase pronta.</p><ul><li>perceber o que sente antes de responder</li><li>dizer isso com precisão</li><li>achar o que faz sentido na fala do outro</li></ul></div>
+      <div class="q rv d2"><span class="k">o que é regulação emocional</span><p class="r">Sentir sem ser <i>arrastado.</i></p><p class="d">Num casal, ela não acontece sozinha. A resposta de um:</p><div class="duas"><span class="calma">acalma o outro</span><span class="fogo">ou incendeia</span></div><p class="d">Por isso o curso olha para os dois lados da conversa.</p></div>
+      <div class="q rv d3"><span class="k">para que serve</span><p class="r">Para a briga parar de <i>escalar.</i></p><ul class="ok"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>falar do que importa sem virar guerra</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>se sentir entendido</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>consertar quando der errado</li><li class="psi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>para psicólogos: um mapa para trabalhar isso com casais na clínica</li></ul></div>
     </div>
   </div>
 </section>
