@@ -97,6 +97,9 @@ h1 i,h2 i,h3 i{font-style:italic}
 .passo p{grid-column:2;color:#4a5852;font-size:1.02rem}
 @media(min-width:1000px){.passo{grid-template-columns:60px minmax(0,1.3fr) minmax(0,.7fr);align-items:center}.passo p{grid-column:3}}
 
+.passo .hab{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.passo .hab span{font-size:.78rem;font-weight:700;letter-spacing:.03em;padding:3px 11px;border-radius:999px;border:1px solid rgba(186,43,43,.45);color:var(--vermelho)}
+
 /* como funciona: cartões */
 .como{padding:clamp(70px,9vw,120px) 0}
 .cards{display:grid;gap:14px;margin-top:34px}
@@ -198,11 +201,11 @@ picture{display:contents}
 
 <section class="enc" id="encontros">
   <div class="wrap">
-    <div class="topo-e"><h2 class="rv">Os dois <i>encontros</i></h2><p class="rv d1">Um antes da descoberta. Outro depois.</p></div>
+    <div class="topo-e"><h2 class="rv">Os dois <i>encontros</i></h2><p class="rv d1">Na ordem do livro: primeiro as consequências, depois os motivos.</p></div>
     <div class="trilha" id="trilha">
       <svg aria-hidden="true"><path id="fio" fill="none" stroke="#BA2B2B" stroke-width="2" stroke-linecap="round"/></svg>
-      <div class="passo"><span class="n">1</span><h3>O que é e <i>por que acontece</i></h3><p>Segredo, desejo, envolvimento: o que faz um caso ser um caso, e por que as pessoas traem, inclusive as que estão felizes na relação.</p></div>
-      <div class="passo"><span class="n">2</span><h3>Depois da <i>descoberta</i></h3><p>A crise, o que ela significa para cada um e o que a terapia de casal pode fazer.</p></div>
+      <div class="passo"><span class="n">1</span><h3>O que conta como traição e <i>por que dói tanto</i></h3><p>O que é trair hoje, por que a descoberta dói tanto e o que fazer com essa dor.<span class="hab"><span>o que conta como traição</span><span>como os casos mudaram</span><span>por que dói tanto</span><span>ciúme</span><span>vingança e autorrecriminação</span><span>contar ou não contar</span></span></p></div>
+      <div class="passo"><span class="n">2</span><h3>Por que acontece e <i>o que vem depois</i></h3><p>Por que até pessoas felizes traem, o que alguém procura num caso e o que acontece com a relação depois.<span class="hab"><span>até pessoas felizes traem</span><span>a vontade de ser outra pessoa</span><span>sexo pode ser só sexo?</span><span>o lugar da amante</span><span>monogamia</span><span>depois da crise</span></span></p></div>
     </div>
   </div>
 </section>
@@ -216,7 +219,7 @@ picture{display:contents}
         <h3>Ao vivo</h3><p>Dois encontros, de duas horas, numa terça ou num sábado de manhã.</p><p class="ex">Se precisar mudar o dia, você fica sabendo antes.</p></div>
       <div class="card b rv d2"><span class="num" aria-hidden="true">ii</span>
         <svg class="ic" viewBox="0 0 84 84" aria-hidden="true"><path d="M10 22c10-5 21-5 32 2 11-7 22-7 32-2v44c-10-5-21-5-32 2-11-7-22-7-32-2z"/><path d="M42 24v44"/><path d="M18 34c6-2 12-2 17 1M18 44c6-2 12-2 17 1M49 35c5-3 11-3 17-1M49 45c5-3 11-3 17-1"/></svg>
-        <h3>Leitura</h3><p>Trechos de <i>Casos e casos</i>, de Esther Perel.</p><p class="ex">Para chegar com o assunto na cabeça.</p></div>
+        <h3>Leitura</h3><p>Os capítulos de <i>Casos e casos</i>, de Esther Perel, divididos entre os dois encontros.</p><p class="ex">Para você ler antes de cada encontro.</p></div>
       <div class="card c rv d3"><span class="num" aria-hidden="true">iii</span>
         <svg class="ic" viewBox="0 0 84 84" aria-hidden="true"><rect x="12" y="20" width="60" height="44" rx="6"/><path d="M12 30h60M12 54h60M22 20v10M32 20v10M42 20v10M52 20v10M62 20v10M22 54v10M32 54v10M42 54v10M52 54v10M62 54v10"/><path d="M37 36l10 6-10 6z"/></svg>
         <h3>Gravado</h3><p>Perdeu um encontro ou quer rever? A gravação fica com você.</p><p class="ex">Para rever quando o assunto aparecer no consultório.</p></div>
@@ -249,7 +252,7 @@ picture{display:contents}
       <h2>Puxa uma <i>cadeira</i></h2>
       <ul class="inc">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Dois encontros ao vivo, de duas horas</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Os trechos de leitura</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>A leitura de cada encontro</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>A gravação dos dois encontros</li>
       </ul>
       <a class="btn" href="#entra" data-checkout>Quero saber quando abrir <span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
