@@ -97,6 +97,23 @@ h1 i,h2 i,h3 i{font-style:italic}
 .passo p{grid-column:2;color:#4a5852;font-size:1.02rem}
 @media(min-width:1000px){.passo{grid-template-columns:60px minmax(0,1.3fr) minmax(0,.7fr);align-items:center}.passo p{grid-column:3}}
 
+
+/* o livro e as habilidades */
+.livro{background:var(--verde);color:var(--creme);padding:clamp(70px,9vw,120px) 0}
+.livro .g{display:grid;gap:48px;align-items:start}
+.livro h2{color:var(--creme)}
+.livro .tomo{width:min(180px,46vw);aspect-ratio:2/3;margin:0 auto;border-radius:4px 14px 14px 4px;background:var(--vermelho);color:var(--creme);padding:26px 22px 22px 30px;display:flex;flex-direction:column;justify-content:space-between;position:relative;transform:rotate(-3deg);box-shadow:inset 10px 0 0 rgba(0,0,0,.18),0 30px 44px -22px rgba(0,0,0,.7)}
+.livro .tomo::after{content:"";position:absolute;inset:14px 14px 14px 24px;border:1px solid rgba(253,238,221,.35);border-radius:2px 8px 8px 2px;pointer-events:none}
+.livro .tomo b{font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-weight:400;font-size:1.7rem;line-height:1.02}
+.livro .tomo span{font-weight:800;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.livro .big{font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:clamp(1.45rem,2.6vw,1.9rem);line-height:1.25;margin-top:20px;max-width:34ch}
+.livro .tres{display:grid;gap:26px;margin-top:40px}
+.livro .tres h3{font-size:1.75rem;line-height:1.1;font-style:italic;color:#f1b6a6}
+.livro .tres p{margin-top:8px;opacity:.92;max-width:44ch}
+@media(min-width:900px){.livro .g{grid-template-columns:300px minmax(0,1fr);gap:70px}.livro .tomo{margin:10px 0 0;width:250px}.livro .tomo b{font-size:2.2rem}.livro .tres{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}}
+.passo .hab{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.passo .hab span{font-size:.78rem;font-weight:700;letter-spacing:.03em;padding:3px 11px;border-radius:999px;border:1px solid rgba(186,43,43,.45);color:var(--vermelho)}
+
 /* como funciona: cartões */
 .como{padding:clamp(70px,9vw,120px) 0}
 .cards{display:grid;gap:14px;margin-top:34px}
@@ -195,16 +212,30 @@ picture{display:contents}
   </div>
 </section>
 
+<section class="livro">
+  <div class="wrap g">
+    <div class="tomo rv" aria-hidden="true"><b>Casais em constante conflito</b><span>Alan E. Fruzzetti</span></div>
+    <div>
+      <h2 class="rv">O livro e as <i>habilidades</i></h2>
+      <p class="big rv d1">Alan Fruzzetti é um psicólogo americano que levou a terapia comportamental dialética para casais e famílias. No livro, ele parte de uma ideia simples: quando a emoção sobe rápido demais, ninguém escuta ninguém, e a briga vira sempre a mesma.</p>
+      <div class="tres">
+        <div class="rv d1"><h3>O que é uma habilidade</h3><p>Não é truque nem frase pronta. É um jeito de agir que se aprende e se treina: perceber o que você está sentindo antes de responder, dizer isso com precisão, achar o que faz sentido na fala do outro.</p></div>
+        <div class="rv d2"><h3>O que é regulação emocional</h3><p>É conseguir sentir sem ser arrastado pelo que sente. Num casal, ela não acontece sozinha: a resposta de um acalma ou incendeia o outro. Por isso o curso olha para os dois lados da conversa.</p></div>
+        <div class="rv d3"><h3>Para que serve</h3><p>Para a briga parar de escalar. Para conseguir falar do que importa sem virar guerra, se sentir entendido e consertar quando der errado. Para psicólogos, é um mapa para trabalhar isso com casais na clínica.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="enc" id="encontros">
   <div class="wrap">
     <div class="topo-e"><h2 class="rv">Os cinco <i>encontros</i></h2><p class="rv d1">Teseu entrou no labirinto segurando um fio. Aqui, o fio passa por cinco encontros.</p></div>
     <div class="trilha" id="trilha">
       <svg aria-hidden="true"><path id="fio" fill="none" stroke="#BA2B2B" stroke-width="2" stroke-linecap="round"/></svg>
-      <div class="passo"><span class="n">1</span><h3>Brigas que se repetem: <i>por quê? E como?</i></h3><p>Ler a própria emoção. Descrever sem julgar.</p></div>
-      <div class="passo"><span class="n">2</span><h3>Parando de piorar as coisas e <i>tentando se aproximar</i></h3><p>Parar de piorar. Estar junto. Reativar a relação.</p></div>
-      <div class="passo"><span class="n">3</span><h3>Falando de um jeito <i>que dê para ouvir</i></h3><p>Expressão precisa. Encontrar o que é válido na fala do outro.</p></div>
-      <div class="passo"><span class="n">4</span><h3>Validando e <i>juntando os caquinhos</i></h3><p>Validar na prática. Se recuperar depois de uma invalidação.</p></div>
-      <div class="passo"><span class="n">5</span><h3>O que dá para resolver e <i>o que precisa aceitar</i></h3><p>Manejar problemas. Aceitar e se aproximar.</p></div>
+      <div class="passo"><span class="n">1</span><h3>Brigas que se repetem: <i>por quê? E como?</i></h3><p>Por que a mesma briga volta e o que acontece por dentro antes da resposta. Perceber a própria emoção e contar o que aconteceu sem acusar.<span class="hab"><span>ler a própria emoção</span><span>descrever sem julgar</span></span></p></div>
+      <div class="passo"><span class="n">2</span><h3>Parando de piorar as coisas e <i>tentando se aproximar</i></h3><p>Como frear a escalada no meio da briga e voltar a fazer coisas juntos, além de discutir.<span class="hab"><span>parar de piorar</span><span>estar junto</span><span>reativar a relação</span></span></p></div>
+      <div class="passo"><span class="n">3</span><h3>Falando de um jeito <i>que dê para ouvir</i></h3><p>Dizer o que sente e o que quer de um jeito claro, sem ataque, e achar o que faz sentido no que o outro diz, mesmo discordando.<span class="hab"><span>expressão precisa</span><span>encontrar o que é válido</span></span></p></div>
+      <div class="passo"><span class="n">4</span><h3>Validando e <i>juntando os caquinhos</i></h3><p>Mostrar ao outro que ele foi entendido, e o que fazer quando a conversa sai do trilho e alguém se sente desqualificado.<span class="hab"><span>validar</span><span>se recuperar de uma invalidação</span></span></p></div>
+      <div class="passo"><span class="n">5</span><h3>O que dá para resolver e <i>o que precisa aceitar</i></h3><p>Separar o que é problema para resolver do que é diferença para aceitar, e como se aproximar até do que não vai mudar.<span class="hab"><span>manejar problemas</span><span>aceitar e se aproximar</span></span></p></div>
     </div>
   </div>
 </section>
