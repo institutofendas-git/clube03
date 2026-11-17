@@ -81,6 +81,12 @@ h2 i{font-style:italic}
 .lista p.l i{font-style:italic}
 .lista .rodape{margin-top:18px;font-size:.92rem;color:#5d6b64}
 .fio-h{display:block;width:min(420px,70%);margin:0 auto 26px;height:24px}
+/* um fio só: nasce num nó na faixa da lista e termina amarrado em "a gente mesmo" */
+.costura{position:relative}
+.linha-c{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:1}
+.costura.pronto .fio-h,.costura.pronto svg.fio{visibility:hidden}
+#noFim{opacity:0;transition:opacity .5s}#noFim.on{opacity:1}
+.lista .l,.lista .rodape,.fala .txt{position:relative;z-index:2}
 
 /* do que se fala: colagem com fio */
 .fala{padding:clamp(70px,9vw,120px) 0;background:var(--creme)}
@@ -281,6 +287,8 @@ footer a{color:var(--creme)}
   </div>
 </section>
 
+<div class="costura" id="costura">
+<svg class="linha-c" id="linhaC" aria-hidden="true"><path id="fioC" fill="none" stroke="#BA2B2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle id="noIni" r="3.6" fill="#BA2B2B"/><circle id="noFim" r="7.5" fill="none" stroke="#BA2B2B" stroke-width="1.8"/></svg>
 <section class="lista" aria-label="O que tem no clube">
   <svg class="fio-h" viewBox="0 0 420 24" aria-hidden="true"><path d="M2 14 C 80 2, 140 26, 210 12 S 340 2, 418 12" fill="none" stroke="#BA2B2B" stroke-width="1.6" stroke-linecap="round"/></svg>
   <p class="l rv">Um <i>encontro</i> ao vivo por semana</p>
@@ -315,6 +323,7 @@ footer a{color:var(--creme)}
     </div>
   </div>
 </section>
+</div>
 
 <section class="leva">
   <div class="wrap">
@@ -464,15 +473,70 @@ footer a{color:var(--creme)}
   $$('.tag').forEach((t, i) => t.style.transitionDelay = (.4 + i * .12) + 's');
 
   /* fio que se desenha ao rolar */
-  const col = $('#colagem');
-  const fios = ['#fio', '#fioM'].map(id => { const el = $(id); let L = 0; try { L = el.getTotalLength(); el.style.strokeDasharray = L; el.style.strokeDashoffset = still ? 0 : L; } catch (e) {} return { el, L }; });
+  const costura = $('#costura'), fioC = $('#fioC'), noIni = $('#noIni'), noFim = $('#noFim');
+  let fioL = 0, fioMarcas = [];
+  const amostra = (path, n) => {
+    const m = path.getScreenCTM(); if (!m) return [];
+    const L = path.getTotalLength(), o = costura.getBoundingClientRect(), pts = [];
+    for (let i = 0; i <= n; i++) { const q = path.getPointAtLength(L * i / n), r = new DOMPoint(q.x, q.y).matrixTransform(m); pts.push([r.x - o.left, r.y - o.top]); }
+    return pts;
+  };
+  const curva = P => { /* Catmull-Rom centrípeta em béziers */
+    let d = `M${P[0][0].toFixed(1)} ${P[0][1].toFixed(1)}`;
+    const dist = (a, b) => Math.max(1e-3, Math.sqrt(Math.hypot(b[0] - a[0], b[1] - a[1])));
+    for (let i = 0; i < P.length - 1; i++) {
+      const p0 = P[i - 1] || P[i], p1 = P[i], p2 = P[i + 1], p3 = P[i + 2] || p2;
+      const t1 = dist(p0, p1), t2 = dist(p1, p2), t3 = dist(p2, p3);
+      const c1 = [0, 1].map(k => p1[k] + (t2 / 3) * ((p1[k] - p0[k]) / t1 - (p2[k] - p0[k]) / (t1 + t2) + (p2[k] - p1[k]) / t2));
+      const c2 = [0, 1].map(k => p2[k] - (t2 / 3) * ((p3[k] - p2[k]) / t3 - (p3[k] - p1[k]) / (t2 + t3) + (p2[k] - p1[k]) / t2));
+      const a = p0 === p1 ? [p1[0] + (p2[0] - p1[0]) / 3, p1[1] + (p2[1] - p1[1]) / 3] : c1;
+      const b = p3 === p2 ? [p2[0] - (p2[0] - p1[0]) / 3, p2[1] - (p2[1] - p1[1]) / 3] : c2;
+      d += ` C${a[0].toFixed(1)} ${a[1].toFixed(1)} ${b[0].toFixed(1)} ${b[1].toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+    }
+    return d;
+  };
+  const montaFio = () => {
+    const o = costura.getBoundingClientRect(), W = o.width, rel = el => { const r = el.getBoundingClientRect(); return { l: r.left - o.left, t: r.top - o.top, r: r.right - o.left, b: r.bottom - o.top, w: r.width, h: r.height }; };
+    const fh = $('.fio-h path'), mob = matchMedia('(max-width:700px)').matches;
+    const ini = amostra(fh, 14); if (!ini.length) return;
+    const lista = rel($('.lista')), txt = rel($('.fala .txt')), colR = rel($('#colagem')), wrapL = rel($('.fala .wrap'));
+    const fim = ini[ini.length - 1], mx = mob ? W - 6 : Math.min(W - 12, fim[0] + Math.max(24, (W - fim[0]) * .55));
+    const esq = Math.max(10, (txt.l - 0) * .5);
+    const meio = (lista.b + txt.t) / 2;
+    const ponte = [[mx, fim[1] + 50], [mx, lista.b - 40], [W * .52, meio], [esq, txt.t - 12], [esq, colR.t - 10]];
+    let col = amostra(mob ? $('#fioM') : $('#fio'), 90).filter(q => q[0] > 4 && q[0] < W - 4);
+    const t6 = rel($('.t6')), pad = mob ? 11 : 14, alvo = [t6.l + pad + 3.5, t6.t + t6.h / 2];
+    let k = Math.floor(col.length * .7), best = k, bd = 1e9;
+    for (let i = k; i < col.length; i++) { const dd = Math.hypot(col[i][0] - alvo[0], col[i][1] - alvo[1]); if (dd < bd) { bd = dd; best = i; } }
+    col = col.slice(0, best + 1);
+    const P = [...ini, ...ponte, ...col, alvo];
+    fioC.setAttribute('d', curva(P));
+    noIni.setAttribute('cx', ini[0][0]); noIni.setAttribute('cy', ini[0][1]);
+    noFim.setAttribute('cx', alvo[0]); noFim.setAttribute('cy', alvo[1]);
+    fioL = fioC.getTotalLength(); fioC.style.strokeDasharray = fioL;
+    /* para cada trecho do fio, até onde a página precisa ter rolado */
+    fioMarcas = []; let maxY = 0; const N = 160;
+    for (let i = 0; i <= N; i++) { const q = fioC.getPointAtLength(fioL * i / N); maxY = Math.max(maxY, q.y); fioMarcas.push(maxY); }
+    costura.classList.add('pronto'); desenhaFio();
+  };
+  const desenhaFio = () => {
+    if (!fioL) return;
+    if (still) { fioC.style.strokeDashoffset = 0; noFim.classList.add('on'); return; }
+    const linha = innerHeight * .72 - costura.getBoundingClientRect().top;
+    let i = 0; while (i < fioMarcas.length - 1 && fioMarcas[i + 1] <= linha) i++;
+    const f = fioMarcas[0] > linha ? 0 : i / (fioMarcas.length - 1);
+    fioC.style.strokeDashoffset = fioL * (1 - f);
+    noFim.classList.toggle('on', f > .995);
+  };
+  let tFio; addEventListener('resize', () => { clearTimeout(tFio); tFio = setTimeout(montaFio, 150); });
+  addEventListener('load', montaFio); if (document.fonts) document.fonts.ready.then(montaFio); montaFio();
 
   const topoImgs = $$('.topo .img'), topo = $('#topo'), fechoImg = $('#fechoImg');
   const parallax = !still && matchMedia('(hover:hover) and (pointer:fine)').matches;
   const onScroll = () => {
     const y = scrollY, vh = innerHeight;
     if (parallax && y < topo.offsetHeight) topoImgs.forEach(i => i.style.transform = `translateY(${y * .3}px)`);
-    if (!still) { const r = col.getBoundingClientRect(); const p = Math.min(1, Math.max(0, (vh - r.top) / (r.height + vh * .5))); fios.forEach(f => { if (f.L) f.el.style.strokeDashoffset = f.L * (1 - p); }); }
+    desenhaFio();
     if (parallax) { const f = fechoImg.parentElement.getBoundingClientRect(); if (f.top < vh && f.bottom > 0) fechoImg.style.transform = `translateY(${(f.top - vh / 2) * -.12}px)`; }
   };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
