@@ -157,7 +157,7 @@ h2 i{font-style:italic}
 .agora .ev .cap b{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.25rem;line-height:1}
 .agora .ev .cap small{font-weight:800;font-size:.68rem}
 .agora .ev .cap.foto{padding:0;overflow:hidden;aspect-ratio:4/5;background:var(--tinta)}.agora .ev .cap.foto img{width:100%;height:100%;object-fit:cover}
-.capa.foto{background:linear-gradient(180deg,rgba(3,30,22,.1) 30%,rgba(3,30,22,.85)),url(img/teseu.jpg) 40% 30%/cover!important}
+.capa.foto{background:linear-gradient(180deg,rgba(3,30,22,.1) 30%,rgba(3,30,22,.85)),var(--img) var(--pos,40% 30%)/cover!important}
 .agora .ev .dia{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.05}
 .agora .ev p+p{opacity:.85;margin-top:6px}
 @media(min-width:860px){.agora .g{grid-template-columns:.8fr 1.2fr}}
@@ -360,9 +360,11 @@ footer a{color:var(--creme)}
   </div>
   <!-- ACERVO: um .livro por curso -->
   <div class="estante" id="estante" tabindex="0" aria-label="Estante de cursos">
-    <div class="livro"><button aria-label="Virar a capa do curso 1"><div class="gira"><div class="capa c1 foto"><small>curso 1</small><b>Conflitos constantes<em>e regulação emocional</em></b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Conflitos constantes</b><p>Habilidades de regulação emocional para os conflitos que se repetem.</p></div></div></button></div>
-    <div class="livro"><button aria-label="Virar a capa do curso 2"><div class="gira"><div class="capa c2"><small>curso gravado</small><b>Em breve</b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Curso 2</b><p>Tema anunciado no lançamento.</p></div></div></button></div>
-    <div class="livro"><button aria-label="Virar a capa do curso 3"><div class="gira"><div class="capa c3"><small>curso gravado</small><b>Em breve</b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Curso 3</b><p>Tema anunciado no lançamento.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: Conflitos constantes"><div class="gira"><div class="capa c1 foto" style="--img:url(img/teseu.jpg)"><small>curso</small><b>Conflitos constantes<em>e regulação emocional</em></b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Conflitos constantes</b><p>Habilidades de regulação emocional para os conflitos que se repetem.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: O básico de sexualidade"><div class="gira"><div class="capa c2 foto" style="--img:url(img/jardim.jpg);--pos:50% 60%"><small>curso</small><b>O básico<em>de sexualidade</em></b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>O básico de sexualidade</b><p>Gênero, função sexual, disfunções e parafilias.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: Papéis de gênero"><div class="gira"><div class="capa c3 foto" style="--img:url(img/lavadeiras.jpg);--pos:62% 50%"><small>aula</small><b>Papéis de gênero<em>e terapia de relacionamentos</em></b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Papéis de gênero</b><p>Os termos e o manejo na terapia de casal.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: Traição"><div class="gira"><div class="capa c4 foto" style="--img:url(img/cupido.jpg);--pos:50% 25%"><small>aula</small><b>Traição<em>infidelidade e seus significados</em></b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Traição</b><p>O que uma traição significa, a partir de Esther Perel.</p></div></div></button></div>
+    <div class="livro"><button aria-label="Virar a capa: Do que falamos quando falamos de amor"><div class="gira"><div class="capa c2 foto" style="--img:url(img/bauer.jpg);--pos:75% 50%"><small>curso</small><b>Do que falamos<em>quando falamos de amor</em></b><img src="img/clube03-horiz-bege.svg" alt=""></div><div class="verso"><b>Do que falamos quando falamos de amor</b><p>O conto de Carver, o amor e o não dito.</p></div></div></button></div>
     <div class="livro prox"><div class="gira"><div class="capa"><small>próximos</small><b>Um de cada vez</b><span>e a estante cresce</span></div></div></div>
   </div>
   <p class="dica">toque numa capa para virar · arraste para o lado</p>
