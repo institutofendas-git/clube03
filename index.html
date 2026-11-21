@@ -45,14 +45,13 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
 .hero-foto{position:absolute;inset:0;z-index:0;background:var(--verde) url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAQABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDTup7W0wJpFBPaiC6tJlDJKv515zLd3U75kdnPqTUiySJHy5H41i7oSij0NtStEkMLSoH+tFebCC4nbzA5Oe5NFF49wsf/2Q==) 44% 50%/cover no-repeat;overflow:hidden}
 .hero-foto img{width:100%;height:100%;object-fit:cover;object-position:44% 50%}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(3,30,22,.25) 0%,rgba(3,30,22,0) 30%,rgba(3,30,22,.55) 55%,rgba(3,30,22,.92) 78%,var(--verde) 100%)}
-.hero-logo{position:relative;z-index:2;width:132px;margin:36px auto 0;animation:sobe .8s .1s both}
+.hero-logo{position:relative;z-index:2;width:132px;margin:auto;animation:sobe .8s .1s both}
 .hero-text{position:relative;z-index:2;padding:0 28px 48px;text-align:center}
 .hero h1{font-weight:400;line-height:.92}
-.hero h1 .a{display:block;white-space:nowrap;font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:min(2.9rem,11.2vw);animation:sobe .8s .25s both}
+.hero h1 .a{display:block;white-space:nowrap;font-family:"Instrument Serif","IS Fallback",Georgia,serif;font-size:min(2.9rem,10.4vw);animation:sobe .8s .25s both}
 .hero h1 .b{display:block;font-family:"Birthstone",cursive;font-size:3.9rem;line-height:.85;color:var(--grama);animation:sobe .8s .4s both}
 .hero p{margin:18px auto 0;max-width:32ch;font-size:1.1rem;line-height:1.45;animation:sobe .8s .55s both}
 .hero p b{color:#fff}
-.hero p.pq{margin-top:12px;font-style:italic;opacity:.85}
 .hero .down{display:inline-grid;place-items:center;width:44px;height:44px;margin-top:24px;border-radius:50%;border:1.5px solid rgba(253,238,221,.6);text-decoration:none;animation:sobe .8s .7s both}
 @media(min-width:860px){
   .hero{flex-direction:row;min-height:100vh;background:var(--verde)}
@@ -61,8 +60,9 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
   .hero-right{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:56px 7vw 64px}
   .hero-logo{margin:0;width:150px}
   .hero-text{padding:0;text-align:left}
-  .hero h1 .a{font-size:min(4.6rem,5vw)}.hero h1 .b{font-size:5.6rem}
-  .hero p{margin:26px 0 0;font-size:1.3rem;max-width:34ch}
+  .hero h1 .a{font-size:min(3.9rem,4vw)}.hero h1 .b{font-size:min(5.6rem,6.6vw);white-space:nowrap}
+  .hero-text{margin-top:28px}
+  .hero p{margin:26px 0 0;font-size:1.3rem;max-width:30ch}
 }
 @media(max-width:859px){.hero-right{display:contents}}
 
@@ -167,16 +167,15 @@ picture{display:contents}
   <path class="cls-1" d="M895.91,652.96c-.76,195.78-75.15,406.35-240.85,521.43-186.96,128.09-398.71,36.69-509.5-143.2-71.26-112.25-104.73-245.88-105.04-378.22.32-132.34,33.8-265.97,105.07-378.21C256.31,95,468.07,3.45,655.03,131.58c165.71,115.08,240.09,325.6,240.88,521.38h0ZM856.77,652.96c-.02-210.06-82.08-470.18-295.69-550.26-162.96-56.87-314.49,45.44-392.17,186.15-62.47,110.23-88.6,238.22-88.97,364.12.37,125.89,26.52,253.89,89,364.1,77.63,140.59,229.22,243.02,392.12,186.11,213.63-80.08,295.65-340.14,295.71-550.21h0Z"/>
 </svg></a>
     <div class="hero-text">
-      <h1><span class="a">Boas-vindas<br>ao seu</span><span class="b">terceiro lugar</span></h1>
-      <p>Para além da sua casa e do seu trabalho, o Clube 03 quer ser um espaço para você pensar, conversar, sentir e questionar. Aqui a gente estuda as histórias do amor, da sexualidade, dos conflitos e do cuidado, com um olhar interseccional.</p>
-      <p class="pq">Para profissionais de saúde e para quem quiser aprender.</p>
-      <a class="down" href="#botoes" aria-label="Ver os cursos">↓</a>
+      <h1><span class="a">Boas-vindas ao seu</span><span class="b">terceiro lugar</span></h1>
+      <p>Para além da sua casa e do seu trabalho, o Clube 03 quer ser um espaço para você pensar, conversar, sentir e questionar.</p>
+      <a class="down" href="#botoes" aria-label="Ver os próximos eventos">↓</a>
     </div>
   </div>
 </header>
 
 <main>
-  <h2 class="convite">Veja os<br><em>próximos cursos</em></h2>
+  <h2 class="convite">Veja os<br><em>próximos eventos</em></h2>
 
   <div class="proximo-wrap">
     <a class="reveal destaque" href="sexualidade/">
