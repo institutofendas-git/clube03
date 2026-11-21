@@ -97,7 +97,7 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
 .depois span{font-family:"Birthstone",cursive;font-size:2.3rem;line-height:1;color:var(--vermelho)}
 /* cartões */
 .botoes{max-width:1080px;margin:0 auto;padding:18px 20px 20px;display:grid;gap:16px}
-@media(min-width:700px){.botoes{grid-template-columns:repeat(6,1fr);gap:22px;padding-top:24px}.card{grid-column:span 3}.card.largo{grid-column:1 / -1}.card.largo .bg{width:62%}}
+@media(min-width:700px){.botoes{grid-template-columns:repeat(6,1fr);gap:22px;padding-top:24px}.card{grid-column:span 3}.card.largo{grid-column:1 / -1}.card.largo .bg{width:62%;object-position:50% 50%}}
 .card{-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;min-height:230px;padding:26px 24px;border-radius:26px;overflow:hidden;
   text-decoration:none;color:var(--creme);isolation:isolate;background:var(--cor,var(--verde));box-shadow:0 18px 30px -20px rgba(3,30,22,.7);transition:transform .25s ease,box-shadow .25s ease}
 .card .bg{position:absolute;z-index:-2;top:0;right:0;height:100%;width:78%;object-fit:cover;object-position:var(--pos,50% 40%);
@@ -190,9 +190,10 @@ picture{display:contents}
   <p class="depois reveal"><span>e depois</span></p>
 
   <div class="botoes" id="botoes">
-    <a class="reveal card" href="autopratica-compaixao/" style="--cor:var(--verde);--pos:50% 60%">
-      <img decoding="async" class="bg f" loading="lazy" src="img/w/mini-lobo.webp" alt="">
-      <span class="estado">previsto para 2027</span><span class="tipo">grupo · online · quinzenal</span>
+    <a class="reveal card largo" href="autopratica-compaixao/" style="--cor:var(--verde);--pos:50% 55%">
+      <picture><source media="(min-width:700px)" srcset="img/w/mini-lobo-largo.webp"><img decoding="async" class="bg f" loading="lazy" src="img/w/mini-lobo.webp" alt=""></picture>
+      <span class="estado">previsto para 2027</span>
+      <span class="tipo">grupo · online</span>
       <h3><span class="a">Autoprática em Terapia</span><span class="b">Focada em Compaixão</span></h3>
       <span class="cta">Conhecer o grupo</span>
     </a>
