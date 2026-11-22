@@ -95,6 +95,16 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
 @media(hover:hover) and (pointer:fine){.destaque:hover{transform:translateY(-3px);box-shadow:0 36px 50px -26px rgba(3,30,22,.9)}.destaque:hover .bg{transform:scale(1.03)}.destaque:hover .cta::after{transform:translateX(5px)}}
 .destaque+.destaque{margin-top:22px}.t-sup{background-image:url("img/w/mini-tanner.webp");background-position:50% 0}.t-sup .bg{object-position:50% 0}@media(max-width:859px){.t-sup{min-height:min(172vw,760px)}}
 @media(min-width:860px){.t-sup{background-image:none}.t-sup .bg{object-position:50% 50%}.destaque+.destaque{margin-top:28px}}
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+.t-sup{outline:1px solid rgba(253,238,221,.5);outline-offset:-12px}
+.t-sup:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px}
+.t-sup::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;padding:3px;pointer-events:none;
+  background:conic-gradient(from var(--ang),rgba(253,238,221,.18),#f3dcb8 9%,rgba(253,238,221,.18) 20%,rgba(186,43,43,.9) 38%,rgba(253,238,221,.18) 55%,#f3dcb8 72%,rgba(253,238,221,.18) 84%,rgba(186,43,43,.9) 94%,rgba(253,238,221,.18));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  animation:aro 9s linear infinite}
+@keyframes aro{to{--ang:360deg}}
+.t-sup{box-shadow:0 30px 44px -26px rgba(3,30,22,.85),0 0 0 1px rgba(186,43,43,.12),0 18px 60px -30px rgba(186,43,43,.55)}
+@media(prefers-reduced-motion:reduce){.t-sup::before{animation:none}}
 .depois{max-width:1080px;margin:0 auto;padding:46px 20px 0;display:flex;align-items:center;gap:16px;color:var(--verde)}
 .depois::before,.depois::after{content:"";flex:1;height:1px;background:currentColor;opacity:.25}
 .depois span{font-family:"Birthstone",cursive;font-size:2.3rem;line-height:1;color:var(--vermelho)}
