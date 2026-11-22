@@ -93,6 +93,8 @@ a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px;border-radi
 .destaque .preco s{font-size:1.05rem;opacity:.7;margin-right:4px}
 @media(min-width:860px){.destaque{background-image:none;background-color:#0d1512}.destaque .bg{left:34%;width:66%;object-position:0 0;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 12%,rgba(0,0,0,.8) 24%,#000 34%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 12%,rgba(0,0,0,.8) 24%,#000 34%)}.destaque{min-height:540px}.destaque::after{background:linear-gradient(90deg,rgba(13,21,18,.95) 30%,rgba(13,21,18,.7) 40%,rgba(13,21,18,.35) 50%,rgba(13,21,18,.1) 58%,rgba(13,21,18,0) 66%)}.destaque .txt{padding:48px 52px;max-width:560px}.destaque .selo-prox{top:28px;left:52px}.destaque h3 .a{font-size:3.6rem}.destaque h3 .b{font-size:4rem}.destaque .frase{font-size:1.55rem}.destaque .bg{object-position:0 0}}
 @media(hover:hover) and (pointer:fine){.destaque:hover{transform:translateY(-3px);box-shadow:0 36px 50px -26px rgba(3,30,22,.9)}.destaque:hover .bg{transform:scale(1.03)}.destaque:hover .cta::after{transform:translateX(5px)}}
+.destaque+.destaque{margin-top:22px}.t-sup{background-image:url("img/w/mini-tanner.webp");background-position:50% 0}.t-sup .bg{object-position:50% 0}@media(max-width:859px){.t-sup{min-height:min(172vw,760px)}}
+@media(min-width:860px){.t-sup{background-image:none}.t-sup .bg{object-position:50% 50%}.destaque+.destaque{margin-top:28px}}
 .depois{max-width:1080px;margin:0 auto;padding:46px 20px 0;display:flex;align-items:center;gap:16px;color:var(--verde)}
 .depois::before,.depois::after{content:"";flex:1;height:1px;background:currentColor;opacity:.25}
 .depois span{font-family:"Birthstone",cursive;font-size:2.3rem;line-height:1;color:var(--vermelho)}
@@ -178,6 +180,16 @@ picture{display:contents}
   <h2 class="convite">Veja os<br><em>próximos eventos</em></h2>
 
   <div class="proximo-wrap">
+    <a class="reveal destaque t-sup" href="supervisao/">
+      <picture><source media="(max-width:859px)" type="image/avif" srcset="img/w/tanner-retrato-800.avif 800w, img/w/tanner-retrato-940.avif 940w" sizes="100vw"><source media="(max-width:859px)" type="image/webp" srcset="img/w/tanner-retrato-800.webp 800w, img/w/tanner-retrato-940.webp 940w" sizes="100vw"><source type="image/avif" srcset="img/w/tanner-card-800.avif 800w, img/w/tanner-card-1200.avif 1200w" sizes="(min-width:1080px) 690px, 64vw"><img class="bg f" loading="lazy" decoding="async" src="img/w/tanner-card-800.webp" srcset="img/w/tanner-card-800.webp 800w, img/w/tanner-card-1200.webp 1200w" sizes="(min-width:1080px) 690px, 64vw" alt=""></picture>
+      <span class="selo-prox">supervisão em grupo</span>
+      <div class="txt">
+        <span class="tipo">supervisão · 5 encontros ao vivo</span>
+        <h3><span class="a">Supervisão em psicoterapia</span><span class="b">de relacionamentos</span></h3>
+        <p class="frase">Para conduzir as <i>conversas difíceis</i> de um relacionamento com clareza e criatividade, do primeiro atendimento à alta.</p>
+        <div class="linha"><span class="cta">Ver a supervisão</span><span class="preco">R$450</span></div>
+      </div>
+    </a>
     <a class="reveal destaque" href="sexualidade/">
       <picture><source media="(max-width:859px)" type="image/avif" srcset="img/w/bazille-retrato-800.avif 800w, img/w/bazille-retrato-1110.avif 1110w" sizes="100vw"><source media="(max-width:859px)" type="image/webp" srcset="img/w/bazille-retrato-800.webp 800w, img/w/bazille-retrato-1110.webp 1110w" sizes="100vw"><source type="image/avif" srcset="img/w/bazille-card-800.avif 800w, img/w/bazille-card-1300.avif 1300w" sizes="(min-width:1080px) 650px, 62vw"><img class="bg f" loading="lazy" decoding="async" src="img/w/bazille-card-800.webp" srcset="img/w/bazille-card-800.webp 800w, img/w/bazille-card-1300.webp 1300w" sizes="(min-width:1080px) 650px, 62vw" alt=""></picture>
       <span class="selo-prox">próximo curso</span>
@@ -240,7 +252,7 @@ picture{display:contents}
 
 <footer>
   <p>Francisco Ilo Lima Filho · CRP 11/17085 · <a href="https://franciscoilo.com/">franciscoilo.com</a> · <a href="https://www.instagram.com/fco.ilo/">@fco.ilo</a></p>
-  <p class="cred">Pinturas: Daubigny, Burne-Jones, Bazille, Eliseu Visconti, Konštantín Bauer e outros, em domínio público.</p>
+  <p class="cred">Pinturas: Daubigny, Burne-Jones, Bazille, Henry Ossawa Tanner, Eliseu Visconti, Konštantín Bauer e outros, em domínio público.</p>
 </footer>
 
 <script>
