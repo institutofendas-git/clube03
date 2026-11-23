@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#033D2F">
+<title>Cronômetro · Clube 03</title>
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<style>
+/* VOICE calmo, quase silencioso, muito ar
+   IDEA um relógio de parede antigo num consultório à meia-luz
+   PICTURE o mostrador ocupando quase toda a tela, contagem 60→0 no centro
+   COLOUR verde-escuro da marca no fundo, creme nos traços, azul suave no ponteiro
+   TYPE Instrument Serif para o número, Birthstone no título, Alegreya Sans no resto
+   LAYOUT logo pequena no topo, mostrador no centro, controles numa linha embaixo */
+@font-face{font-family:"Alegreya Sans";font-weight:400;font-display:swap;src:url(../fonts/alegreya-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Alegreya Sans";font-weight:700;font-display:swap;src:url(../fonts/alegreya-sans-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Birthstone";font-weight:400;font-display:swap;src:url(../fonts/birthstone-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Instrument Serif";font-weight:400;font-display:swap;src:url(../fonts/instrument-serif-latin-400-normal.woff2) format("woff2")}
+:root{color-scheme:dark;--bg:#033D2F;--face:#0B4A3A;--creme:#FDEEDD;--soft:rgba(253,238,221,.6);--line:rgba(253,238,221,.16);--hand:#88A0C5}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--creme);font:17px/1.5 "Alegreya Sans",system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,2.6vh,26px);padding:16px;overflow-x:clip}
+header{display:flex;flex-direction:column;align-items:center;gap:2px}
+header img{height:34px;width:auto;opacity:.85}
+h1{margin:0;font:400 clamp(34px,6vmin,46px)/1 "Birthstone",cursive;color:var(--creme)}
+.dial{position:relative;width:min(86vw,56vh,540px);aspect-ratio:1}
+.dial svg{position:absolute;inset:0;width:100%;height:100%}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.num{font:400 clamp(80px,19vmin,156px)/1 "Instrument Serif",Georgia,serif;font-variant-numeric:tabular-nums}
+.sub{color:var(--soft);font-size:16px;margin-top:4px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+button{font:inherit;font-size:16px;min-height:44px;padding:0 20px;border-radius:22px;border:1px solid var(--line);background:var(--face);color:var(--creme);cursor:pointer}
+button.main{background:var(--creme);border-color:var(--creme);color:var(--bg);font-weight:700;min-width:120px}
+button:focus-visible{outline:2px solid var(--hand);outline-offset:2px}
+button:active{transform:translateY(1px)}
+.bpm{display:flex;align-items:center;gap:6px;background:var(--face);border:1px solid var(--line);border-radius:22px;padding:0 6px 0 14px;min-height:44px}
+.bpm button{min-height:34px;min-width:34px;padding:0;border-radius:17px;border:0;background:transparent;font-size:20px}
+.bpm b{font-weight:700;font-variant-numeric:tabular-nums;min-width:1.4em;text-align:center}
+.bpm span{color:var(--soft);font-size:15px}
+.opt{display:flex;align-items:center;gap:8px;color:var(--soft);font-size:15px;cursor:pointer}
+.opt input{width:18px;height:18px;accent-color:var(--hand)}
+.note{margin:0;color:var(--soft);font-size:14px;text-align:center;max-width:34em}
+@media(max-height:620px){header img{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <img src="../img/clube03-horiz-bege.svg" alt="Clube 03">
+  <h1>respirar</h1>
+</header>
+<div class="dial">
+  <svg viewBox="-200 -200 400 400" aria-hidden="true">
+    <circle r="190" fill="var(--face)" stroke="var(--line)" stroke-width="1.5"/>
+    <g id="ticks"></g>
+    <circle r="168" fill="none" stroke="var(--line)" stroke-width="2.5"/>
+    <path id="arc" fill="none" stroke="var(--hand)" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+    <g id="hand">
+      <line x1="0" y1="26" x2="0" y2="-176" stroke="var(--hand)" stroke-width="2.5" stroke-linecap="round"/>
+      <circle r="5.5" fill="var(--hand)"/>
+    </g>
+  </svg>
+  <div class="center"><div class="num" id="num">60</div><div class="sub" id="sub">volta 1</div></div>
+</div>
+<div class="controls">
+  <button class="main" id="go">Começar</button>
+  <button id="reset">Zerar</button>
+  <div class="bpm">
+    <span>marcas</span>
+    <button id="minus" aria-label="Menos respirações">−</button>
+    <b id="bpmv">6</b>
+    <button id="plus" aria-label="Mais respirações">+</button>
+    <span>/min</span>
+  </div>
+  <label class="opt"><input type="checkbox" id="snd"> som a cada volta</label>
+</div>
+<p class="note">Pontos maiores: início de cada respiração. Pontos menores: meio do ciclo, onde a inspiração vira expiração.</p>
+<script>
+{
+const $=id=>document.getElementById(id);
+const hand=$('hand'),arc=$('arc'),ticks=$('ticks'),num=$('num'),sub=$('sub'),go=$('go');
+let bpm=6,running=false,acc=0,t0=0,lastLap=0,audio=null,lock=null;
+try{const s=JSON.parse(localStorage.getItem('c03-cronometro')||'{}');if(s.bpm>=1&&s.bpm<=30)bpm=s.bpm;$('snd').checked=!!s.snd}catch(e){}
+const save=()=>{try{localStorage.setItem('c03-cronometro',JSON.stringify({bpm,snd:$('snd').checked}))}catch(e){}};
+const pt=(a,r)=>[Math.sin(a)*r,-Math.cos(a)*r];
+function drawTicks(){
+  let h='';
+  for(let i=0;i<60;i++){const a=i/60*2*Math.PI,[x1,y1]=pt(a,182),[x2,y2]=pt(a,i%5?177:172);
+    h+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--creme)" stroke-width="${i%5?1:1.5}" opacity="${i%5?.25:.55}"/>`}
+  for(let i=0;i<bpm*2;i++){const a=i/(bpm*2)*2*Math.PI,[x,y]=pt(a,152),big=i%2===0;
+    h+=`<circle cx="${x}" cy="${y}" r="${big?5.5:2.8}" fill="var(--creme)" opacity="${big?.9:.45}"/>`}
+  [0,15,30,45].forEach(s=>{const a=s/60*2*Math.PI,[x,y]=pt(a,128);
+    h+=`<text x="${x}" y="${y}" fill="var(--creme)" opacity=".5" font-size="16" text-anchor="middle" dominant-baseline="central" font-family="Instrument Serif, Georgia, serif">${s?60-s:60}</text>`});
+  ticks.innerHTML=h;$('bpmv').textContent=bpm;
+}
+function elapsed(){return acc+(running?(performance.now()-t0)/1000:0)}
+function beep(){if(!$('snd').checked||!audio)return;try{const o=audio.createOscillator(),g=audio.createGain();o.frequency.value=432;o.type='sine';g.gain.setValueAtTime(0,audio.currentTime);g.gain.linearRampToValueAtTime(.2,audio.currentTime+.08);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+1.8);o.connect(g).connect(audio.destination);o.start();o.stop(audio.currentTime+1.9)}catch(e){}}
+function frame(){
+  const e=elapsed(),lap=Math.floor(e/60),s=e-lap*60,f=s/60;
+  hand.setAttribute('transform',`rotate(${f*360})`);
+  if(f<0.0005)arc.setAttribute('d','');else{const [x,y]=pt(f*2*Math.PI,168);arc.setAttribute('d',`M0 -168 A168 168 0 ${f>.5?1:0} 1 ${x} ${y}`)}
+  num.textContent=60-Math.floor(s);
+  if(lap>lastLap){lastLap=lap;beep()}
+  sub.textContent=`volta ${lap+1} · respiração ${Math.floor(s/(60/bpm))+1} de ${bpm}`;
+  if(running)requestAnimationFrame(frame);
+}
+async function keepAwake(on){try{if(on&&navigator.wakeLock)lock=await navigator.wakeLock.request('screen');else if(lock){await lock.release();lock=null}}catch(e){}}
+go.onclick=()=>{
+  if(!audio){try{audio=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+  if(running){acc=elapsed();running=false;go.textContent='Continuar';keepAwake(false)}
+  else{t0=performance.now();running=true;go.textContent='Pausar';keepAwake(true);requestAnimationFrame(frame)}
+};
+$('reset').onclick=()=>{running=false;acc=0;lastLap=0;go.textContent='Começar';keepAwake(false);frame()};
+$('minus').onclick=()=>{if(bpm>1){bpm--;drawTicks();save();frame()}};
+$('plus').onclick=()=>{if(bpm<30){bpm++;drawTicks();save();frame()}};
+$('snd').onchange=save;
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&running){keepAwake(true);requestAnimationFrame(frame)}});
+document.addEventListener('keydown',ev=>{if(ev.code==='Space'&&ev.target.tagName!=='BUTTON'){ev.preventDefault();go.click()}});
+drawTicks();frame();
+}
+</script>
+</body>
+</html>
