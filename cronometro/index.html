@@ -39,7 +39,7 @@ button:focus-visible{outline:2px solid var(--hand);outline-offset:2px}
 button:active{transform:translateY(1px)}
 .bpm{display:flex;align-items:center;gap:6px;background:var(--face);border:1px solid var(--line);border-radius:22px;padding:0 6px 0 14px;min-height:44px}
 .bpm button{min-height:34px;min-width:34px;padding:0;border-radius:17px;border:0;background:transparent;font-size:20px}
-.bpm b{font-weight:700;font-variant-numeric:tabular-nums;min-width:1.4em;text-align:center}
+.bpm b{font-weight:700;font-variant-numeric:tabular-nums;min-width:2.2em;text-align:center}
 .bpm span{color:var(--soft);font-size:15px}
 .opt{display:flex;align-items:center;gap:8px;color:var(--soft);font-size:15px;cursor:pointer}
 .opt input{width:18px;height:18px;accent-color:var(--hand)}
@@ -69,32 +69,34 @@ button:active{transform:translateY(1px)}
   <button class="main" id="go">Começar</button>
   <button id="reset">Zerar</button>
   <div class="bpm">
-    <span>marcas</span>
-    <button id="minus" aria-label="Menos respirações">−</button>
-    <b id="bpmv">6</b>
-    <button id="plus" aria-label="Mais respirações">+</button>
-    <span>/min</span>
+    <span>respirações por minuto</span>
+    <button id="minus" aria-label="Menos respirações por minuto">−</button>
+    <b id="bpmv" aria-live="polite">6</b>
+    <button id="plus" aria-label="Mais respirações por minuto">+</button>
   </div>
   <label class="opt"><input type="checkbox" id="snd" checked> som nas trocas</label>
 </div>
-<p class="note">Inspire no ponto maior, expire no ponto menor. Um som suave marca cada troca: mais agudo para inspirar, mais grave para expirar.</p>
+<p class="note"><span id="ciclo">Cada respiração dura 10 s: inspire 5 s a partir do ponto maior, expire 5 s a partir do ponto menor.</span> Um som suave marca cada troca: mais agudo para inspirar, mais grave para expirar. Ajuste o ritmo no − e + até ficar confortável, sem forçar.</p>
 <script>
 {
 const $=id=>document.getElementById(id);
 const hand=$('hand'),arc=$('arc'),ticks=$('ticks'),num=$('num'),sub=$('sub'),go=$('go');
-let bpm=6,running=false,acc=0,t0=0,lastIdx=-1,audio=null,lock=null;
-try{const s=JSON.parse(localStorage.getItem('c03-cronometro')||'{}');if(s.bpm>=1&&s.bpm<=30)bpm=s.bpm;if(typeof s.trocas==='boolean')$('snd').checked=s.trocas}catch(e){}
+let bpm=6,curLap=-1,running=false,acc=0,t0=0,lastIdx=-1,audio=null,lock=null;
+try{const s=JSON.parse(localStorage.getItem('c03-cronometro')||'{}');if(s.bpm>=3&&s.bpm<=12)bpm=Math.round(s.bpm*2)/2;if(typeof s.trocas==='boolean')$('snd').checked=s.trocas}catch(e){}
 const save=()=>{try{localStorage.setItem('c03-cronometro',JSON.stringify({bpm,trocas:$('snd').checked}))}catch(e){}};
 const pt=(a,r)=>[Math.sin(a)*r,-Math.cos(a)*r];
-function drawTicks(){
+const fmt=n=>String(Math.round(n*10)/10).replace('.',',');
+function drawTicks(lap){
   let h='';
   for(let i=0;i<60;i++){const a=i/60*2*Math.PI,[x1,y1]=pt(a,182),[x2,y2]=pt(a,i%5?177:172);
     h+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--creme)" stroke-width="${i%5?1:1.5}" opacity="${i%5?.25:.55}"/>`}
-  for(let i=0;i<bpm*2;i++){const a=i/(bpm*2)*2*Math.PI,[x,y]=pt(a,152),big=i%2===0;
+  const half=30/bpm,start=lap*60;
+  for(let k=Math.ceil(start/half-1e-9);k*half<start+60-1e-9;k++){const a=(k*half-start)/60*2*Math.PI,[x,y]=pt(a,152),big=k%2===0;
     h+=`<circle cx="${x}" cy="${y}" r="${big?5.5:2.8}" fill="var(--creme)" opacity="${big?.9:.45}"/>`}
   [0,15,30,45].forEach(s=>{const a=s/60*2*Math.PI,[x,y]=pt(a,128);
     h+=`<text x="${x}" y="${y}" fill="var(--creme)" opacity=".5" font-size="16" text-anchor="middle" dominant-baseline="central" font-family="Instrument Serif, Georgia, serif">${s?60-s:60}</text>`});
-  ticks.innerHTML=h;$('bpmv').textContent=bpm;
+  ticks.innerHTML=h;$('bpmv').textContent=fmt(bpm);
+  $('ciclo').textContent=`Cada respiração dura ${fmt(60/bpm)} s: inspire ${fmt(half)} s a partir do ponto maior, expire ${fmt(half)} s a partir do ponto menor.`;
 }
 function elapsed(){return acc+(running?(performance.now()-t0)/1000:0)}
 function chime(inhale){if(!$('snd').checked||!audio)return;try{if(audio.state==='suspended')audio.resume();const t=audio.currentTime,f=inhale?528:396,out=audio.createGain();out.gain.setValueAtTime(0,t);out.gain.linearRampToValueAtTime(.16,t+.06);out.gain.exponentialRampToValueAtTime(.0008,t+2.2);out.connect(audio.destination);[[1,1],[2,.12],[3,.04]].forEach(([m,v])=>{const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=f*m;g.gain.value=v;o.connect(g).connect(out);o.start(t);o.stop(t+2.3)})}catch(e){}}
@@ -106,7 +108,8 @@ function frame(){
   const idx=Math.floor(e*bpm*2/60+1e-9),inhale=idx%2===0;
   $('phase').textContent=inhale?'inspire':'expire';
   if(running&&idx!==lastIdx){if(lastIdx!==-2)chime(inhale);lastIdx=idx}
-  sub.textContent=`volta ${lap+1} · respiração ${Math.floor(s/(60/bpm))+1} de ${bpm}`;
+  if(lap!==curLap){curLap=lap;drawTicks(lap)}
+  sub.textContent=`volta ${lap+1} · respiração ${Math.floor(e*bpm/60+1e-9)+1}`;
   if(running)requestAnimationFrame(frame);
 }
 async function keepAwake(on){try{if(on&&navigator.wakeLock)lock=await navigator.wakeLock.request('screen');else if(lock){await lock.release();lock=null}}catch(e){}}
@@ -116,12 +119,13 @@ go.onclick=()=>{
   else{t0=performance.now();running=true;go.textContent='Pausar';keepAwake(true);requestAnimationFrame(frame)}
 };
 $('reset').onclick=()=>{running=false;acc=0;lastIdx=-1;go.textContent='Começar';keepAwake(false);frame()};
-$('minus').onclick=()=>{if(bpm>1){bpm--;lastIdx=-2;drawTicks();save();frame()}};
-$('plus').onclick=()=>{if(bpm<30){bpm++;lastIdx=-2;drawTicks();save();frame()}};
+const setBpm=v=>{bpm=Math.min(12,Math.max(3,v));lastIdx=-2;curLap=-1;save();frame()};
+$('minus').onclick=()=>setBpm(bpm-.5);
+$('plus').onclick=()=>setBpm(bpm+.5);
 $('snd').onchange=save;
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&running){keepAwake(true);requestAnimationFrame(frame)}});
 document.addEventListener('keydown',ev=>{if(ev.code==='Space'&&ev.target.tagName!=='BUTTON'){ev.preventDefault();go.click()}});
-drawTicks();frame();
+frame();
 }
 </script>
 </body>
