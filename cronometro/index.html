@@ -30,7 +30,8 @@ h1{margin:0;font:400 clamp(34px,6vmin,46px)/1 "Birthstone",cursive;color:var(--c
 .dial svg{position:absolute;inset:0;width:100%;height:100%}
 .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
 .num{font:400 clamp(80px,19vmin,156px)/1 "Instrument Serif",Georgia,serif;font-variant-numeric:tabular-nums}
-.sub{color:var(--soft);font-size:16px;margin-top:4px}
+.sub{color:var(--soft);font-size:15px;margin-top:2px}
+.phase{font:400 clamp(26px,4.6vmin,36px)/1 "Birthstone",cursive;color:var(--hand);margin-top:4px;min-height:1em}
 .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
 button{font:inherit;font-size:16px;min-height:44px;padding:0 20px;border-radius:22px;border:1px solid var(--line);background:var(--face);color:var(--creme);cursor:pointer}
 button.main{background:var(--creme);border-color:var(--creme);color:var(--bg);font-weight:700;min-width:120px}
@@ -62,7 +63,7 @@ button:active{transform:translateY(1px)}
       <circle r="5.5" fill="var(--hand)"/>
     </g>
   </svg>
-  <div class="center"><div class="num" id="num">60</div><div class="sub" id="sub">volta 1</div></div>
+  <div class="center"><div class="num" id="num">60</div><div class="phase" id="phase">inspire</div><div class="sub" id="sub">volta 1</div></div>
 </div>
 <div class="controls">
   <button class="main" id="go">Começar</button>
@@ -74,16 +75,16 @@ button:active{transform:translateY(1px)}
     <button id="plus" aria-label="Mais respirações">+</button>
     <span>/min</span>
   </div>
-  <label class="opt"><input type="checkbox" id="snd"> som a cada volta</label>
+  <label class="opt"><input type="checkbox" id="snd" checked> som nas trocas</label>
 </div>
-<p class="note">Pontos maiores: início de cada respiração. Pontos menores: meio do ciclo, onde a inspiração vira expiração.</p>
+<p class="note">Inspire no ponto maior, expire no ponto menor. Um som suave marca cada troca: mais agudo para inspirar, mais grave para expirar.</p>
 <script>
 {
 const $=id=>document.getElementById(id);
 const hand=$('hand'),arc=$('arc'),ticks=$('ticks'),num=$('num'),sub=$('sub'),go=$('go');
-let bpm=6,running=false,acc=0,t0=0,lastLap=0,audio=null,lock=null;
-try{const s=JSON.parse(localStorage.getItem('c03-cronometro')||'{}');if(s.bpm>=1&&s.bpm<=30)bpm=s.bpm;$('snd').checked=!!s.snd}catch(e){}
-const save=()=>{try{localStorage.setItem('c03-cronometro',JSON.stringify({bpm,snd:$('snd').checked}))}catch(e){}};
+let bpm=6,running=false,acc=0,t0=0,lastIdx=-1,audio=null,lock=null;
+try{const s=JSON.parse(localStorage.getItem('c03-cronometro')||'{}');if(s.bpm>=1&&s.bpm<=30)bpm=s.bpm;if(typeof s.trocas==='boolean')$('snd').checked=s.trocas}catch(e){}
+const save=()=>{try{localStorage.setItem('c03-cronometro',JSON.stringify({bpm,trocas:$('snd').checked}))}catch(e){}};
 const pt=(a,r)=>[Math.sin(a)*r,-Math.cos(a)*r];
 function drawTicks(){
   let h='';
@@ -96,13 +97,15 @@ function drawTicks(){
   ticks.innerHTML=h;$('bpmv').textContent=bpm;
 }
 function elapsed(){return acc+(running?(performance.now()-t0)/1000:0)}
-function beep(){if(!$('snd').checked||!audio)return;try{const o=audio.createOscillator(),g=audio.createGain();o.frequency.value=432;o.type='sine';g.gain.setValueAtTime(0,audio.currentTime);g.gain.linearRampToValueAtTime(.2,audio.currentTime+.08);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+1.8);o.connect(g).connect(audio.destination);o.start();o.stop(audio.currentTime+1.9)}catch(e){}}
+function chime(inhale){if(!$('snd').checked||!audio)return;try{if(audio.state==='suspended')audio.resume();const t=audio.currentTime,f=inhale?528:396,out=audio.createGain();out.gain.setValueAtTime(0,t);out.gain.linearRampToValueAtTime(.16,t+.06);out.gain.exponentialRampToValueAtTime(.0008,t+2.2);out.connect(audio.destination);[[1,1],[2,.12],[3,.04]].forEach(([m,v])=>{const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=f*m;g.gain.value=v;o.connect(g).connect(out);o.start(t);o.stop(t+2.3)})}catch(e){}}
 function frame(){
   const e=elapsed(),lap=Math.floor(e/60),s=e-lap*60,f=s/60;
   hand.setAttribute('transform',`rotate(${f*360})`);
   if(f<0.0005)arc.setAttribute('d','');else{const [x,y]=pt(f*2*Math.PI,168);arc.setAttribute('d',`M0 -168 A168 168 0 ${f>.5?1:0} 1 ${x} ${y}`)}
   num.textContent=60-Math.floor(s);
-  if(lap>lastLap){lastLap=lap;beep()}
+  const idx=Math.floor(e*bpm*2/60+1e-9),inhale=idx%2===0;
+  $('phase').textContent=inhale?'inspire':'expire';
+  if(running&&idx!==lastIdx){if(lastIdx!==-2)chime(inhale);lastIdx=idx}
   sub.textContent=`volta ${lap+1} · respiração ${Math.floor(s/(60/bpm))+1} de ${bpm}`;
   if(running)requestAnimationFrame(frame);
 }
@@ -112,9 +115,9 @@ go.onclick=()=>{
   if(running){acc=elapsed();running=false;go.textContent='Continuar';keepAwake(false)}
   else{t0=performance.now();running=true;go.textContent='Pausar';keepAwake(true);requestAnimationFrame(frame)}
 };
-$('reset').onclick=()=>{running=false;acc=0;lastLap=0;go.textContent='Começar';keepAwake(false);frame()};
-$('minus').onclick=()=>{if(bpm>1){bpm--;drawTicks();save();frame()}};
-$('plus').onclick=()=>{if(bpm<30){bpm++;drawTicks();save();frame()}};
+$('reset').onclick=()=>{running=false;acc=0;lastIdx=-1;go.textContent='Começar';keepAwake(false);frame()};
+$('minus').onclick=()=>{if(bpm>1){bpm--;lastIdx=-2;drawTicks();save();frame()}};
+$('plus').onclick=()=>{if(bpm<30){bpm++;lastIdx=-2;drawTicks();save();frame()}};
 $('snd').onchange=save;
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&running){keepAwake(true);requestAnimationFrame(frame)}});
 document.addEventListener('keydown',ev=>{if(ev.code==='Space'&&ev.target.tagName!=='BUTTON'){ev.preventDefault();go.click()}});
