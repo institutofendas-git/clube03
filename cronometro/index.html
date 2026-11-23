@@ -82,7 +82,7 @@ button:active{transform:translateY(1px)}
 const $=id=>document.getElementById(id);
 const hand=$('hand'),arc=$('arc'),ticks=$('ticks'),num=$('num'),sub=$('sub'),go=$('go');
 let bpm=6,curLap=-1,running=false,acc=0,t0=0,lastIdx=-1,audio=null,lock=null;
-try{const s=JSON.parse(localStorage.getItem('c03-cronometro')||'{}');if(s.bpm>=3&&s.bpm<=12)bpm=Math.round(s.bpm*2)/2;if(typeof s.trocas==='boolean')$('snd').checked=s.trocas}catch(e){}
+try{const s=JSON.parse(localStorage.getItem('c03-cronometro')||'{}');if(s.bpm>=3&&s.bpm<=12)bpm=Math.round(s.bpm);if(typeof s.trocas==='boolean')$('snd').checked=s.trocas}catch(e){}
 const save=()=>{try{localStorage.setItem('c03-cronometro',JSON.stringify({bpm,trocas:$('snd').checked}))}catch(e){}};
 const pt=(a,r)=>[Math.sin(a)*r,-Math.cos(a)*r];
 const fmt=n=>String(Math.round(n*10)/10).replace('.',',');
@@ -119,9 +119,9 @@ go.onclick=()=>{
   else{t0=performance.now();running=true;go.textContent='Pausar';keepAwake(true);requestAnimationFrame(frame)}
 };
 $('reset').onclick=()=>{running=false;acc=0;lastIdx=-1;go.textContent='Começar';keepAwake(false);frame()};
-const setBpm=v=>{bpm=Math.min(12,Math.max(3,v));lastIdx=-2;curLap=-1;save();frame()};
-$('minus').onclick=()=>setBpm(bpm-.5);
-$('plus').onclick=()=>setBpm(bpm+.5);
+const setBpm=v=>{bpm=Math.min(12,Math.max(3,Math.round(v)));lastIdx=-2;curLap=-1;save();frame()};
+$('minus').onclick=()=>setBpm(bpm-1);
+$('plus').onclick=()=>setBpm(bpm+1);
 $('snd').onchange=save;
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&running){keepAwake(true);requestAnimationFrame(frame)}});
 document.addEventListener('keydown',ev=>{if(ev.code==='Space'&&ev.target.tagName!=='BUTTON'){ev.preventDefault();go.click()}});
